@@ -1,12 +1,13 @@
-# Project Name
+# Places
 
-> Pithy project description
+> Save the places you love most.
+> Discover places your friends love.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Adam
+  - __Scrum Master__: Sepehr
+  - __Development Team Members__: Andrew, Jordan
 
 ## Table of Contents
 
@@ -25,10 +26,9 @@
 ## Requirements
 
 - Node 0.10.x
-- Redis 2.6.x
 - Postgresql 9.1.x
-- etc
-- etc
+- React, Redux
+- React Native
 
 ## Development
 
@@ -37,14 +37,12 @@
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
 npm install
-bower install
 ```
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://waffle.io/hr43-thesis/places/join)
 
 
 ## Contributing
