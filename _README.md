@@ -7,7 +7,7 @@
 
   - __Product Owner__: Adam
   - __Scrum Master__: Sepehr
-  - __Development Team Members__: Andrew, Jordan
+  - __Development Team Members__: Andrew, Jordan, Sepehr, Adam
 
 ## Table of Contents
 
