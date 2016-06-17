@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Nav from './Nav/Nav.jsx';
+// import Home from './Home/HomeContainer';
 
-class App extends Component {
+const App = (props) => (
+  <div>
+    <Nav />
+    <main>
+      {props.children}
+    </main>
+  </div>
+);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-  render() {
-    return (<div> Hello World
-    </div>);
-  }
-}
+App.propTypes = {
+  children: React.PropTypes.object,
+};
 
 export default App;
