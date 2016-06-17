@@ -38,6 +38,7 @@ From within the root directory:
 
 ```sh
 npm install
+npm run startdev
 ```
 
 ### Roadmap
