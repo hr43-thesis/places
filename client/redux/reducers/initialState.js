@@ -10,5 +10,7 @@ export default {
     prevLat: '',
     prevLng: '',
   },
-  isAuthenticated: false,
+  follows: [],
+  favs: [],
+  isAuth: false,
 };

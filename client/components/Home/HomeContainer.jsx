@@ -1,15 +1,11 @@
 import React from 'react';
 import Home from './Home.jsx';
+import { connect } from 'react-redux';
+// import * as placesActions from '../../redux/actions/placesActions';
 
 class HomeContainer extends React.Component {
+  componentDidMount() {
 
-  componentWillMount() {
-    // check auth here later...
-  }
-
-  handleLoginClick() {
-    // do something here...
-    // call the login function with fb init2
   }
 
   render() {
@@ -19,4 +15,10 @@ class HomeContainer extends React.Component {
   }
 }
 
-export default HomeContainer;
+const mapStateToProps = function mapStateToProps(state) {
+  return {
+    places: state.places,
+  };
+};
+
+export default connect(mapStateToProps)(HomeContainer);

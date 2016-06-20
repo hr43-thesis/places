@@ -8,7 +8,7 @@ const AppContainer = (props) => (
 
 const mapStateToProps = function mapStateToProps(state) {
   return {
-    isAuthenticated: state.isAuthenticated,
+    isAuth: state.isAuth,
   };
 };
 

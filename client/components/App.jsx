@@ -1,18 +1,23 @@
 import React from 'react';
 import Nav from './Nav/Nav.jsx';
-// import Home from './Home/HomeContainer';
+import Login from './Login/LoginContainer.jsx';
 
 const App = (props) => (
   <div>
-    <Nav />
-    <main>
-      {props.children}
-    </main>
+    <Nav auth={props.isAuth} />
+    {props.isAuth ?
+      <main>
+        {props.children}
+      </main>
+      :
+      <Login />
+    }
   </div>
 );
 
 App.propTypes = {
   children: React.PropTypes.object,
+  isAuth: React.PropTypes.bool,
 };
 
 export default App;

@@ -1,12 +1,20 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router';
 
-const Nav = () => (
-  <nav>
-    <IndexLink to="/">Home</IndexLink>
-    {' - '}
-    <Link to="/places">Places</Link>
-  </nav>
-);
+const Nav = (props) => {
+  let nav = <nav>Login</nav>;
+  if (props.isAuth) {
+    nav = (
+      <nav>
+        <Link to="/home">Home</Link>
+      </nav>
+    );
+  }
+  return (nav);
+};
 
 export default Nav;
+
+Nav.propTypes = {
+  isAuth: React.PropTypes.bool,
+};
