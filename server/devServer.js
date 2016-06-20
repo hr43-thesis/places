@@ -1,3 +1,10 @@
+// Load environment variables
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config({ path: './env/development.env' });
+} else {
+  require('dotenv').config({ path: './env/production.env' });
+}
+
 const express = require('express');
 const path = require('path');
 
@@ -19,6 +26,6 @@ app.use('*', (req, res) => {
   res.sendFile(path.resolve('client/index.html'));
 });
 
-app.listen(8000, () => {
-  console.log('listening *:8000');
+app.listen(Number(process.env.PORT), process.env.HOST, () => {
+  console.log(`listening *: ${process.env.PORT}`);
 });
