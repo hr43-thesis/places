@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "startdev": "NODE_ENV=development nodemon server/devServer.js --ignore components",
-    "test": "./node_modules/.bin/mocha --reporter spec && eslint test.js"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
