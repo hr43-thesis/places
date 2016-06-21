@@ -8,6 +8,7 @@ export default {
   favs: [],
   isAuth: false,
   users,
+  displayUsers: [],
 };
 
 // user: {

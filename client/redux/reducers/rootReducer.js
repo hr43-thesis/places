@@ -7,6 +7,7 @@ import users from './usersReducer';
 import follows from './followsReducer';
 import favs from './favsReducer';
 import displayPlaces from './displayPlacesReducer';
+import displayUsers from './displayUsersReducer';
 
 const rootReducer = combineReducers({
   places,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   favs,
   auth,
   users,
+  displayUsers,
   routing: routerReducer,
 });
 

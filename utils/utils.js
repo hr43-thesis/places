@@ -7,6 +7,7 @@ export const followUser = (user) => {
   .then(response => {
     console.log(response);
     console.log('followed');
+    return response;
   })
   .catch(error => {
     console.log(error);

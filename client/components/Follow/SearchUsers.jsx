@@ -1,20 +1,19 @@
 import React from 'react';
 
-class SearchUsers extends React.Component() {
-  handleSearchUser(input) {
-    const { users } = this.props;
-    if (users.indexOf(input) > 0) {
-      
-    }
-  }
+const SearchUsers = ({ handleSearchUser }) => (
+  <div>
+    <input
+      type="text"
+      placeholder="Find a friend..."
+      ref="search"
+      onKeyPress={handleSearchUser}
+    />
+  </div>
 
-  render() {
-    return (
-      <div>
-        <input type="text" ref={input => this.handleSearchUser(input)} />
-      </div>
-    );
-  }
-}
+);
+
+SearchUsers.propTypes = {
+  handleSearchUser: React.PropTypes.object,
+};
 
 export default SearchUsers;

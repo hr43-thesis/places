@@ -1,18 +1,12 @@
 import React from 'react';
-import utils from '../../../utils/utils';
 
-class FollowUsersEntry extends React.Component() {
-  handleFollowUser(user) {
-    utils.followUser(user);
-  }
+const FollowUsersEntry = ({ user, handleFollowUser }) => (
+  <div onClick={() => handleFollowUser(user.id)}>{user.name}</div>
+);
 
-  render() {
-    const { user } = this.props;
-
-    return (
-      <div onClick={() => this.handleFollowUser(user)}>user</div>
-    );
-  }
-}
+FollowUsersEntry.propTypes = {
+  user: React.PropTypes.object,
+  handleFollowUser: React.PropTypes.object,
+};
 
 export default FollowUsersEntry;
