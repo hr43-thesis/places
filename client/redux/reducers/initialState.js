@@ -1,16 +1,21 @@
+import { user, users, places } from '../../../sample.js';
+
 export default {
-  places: {},
-  user: {
-    id: 1,
-    fbId: 2342342,
-    name: 'Fred',
-    email: 'fred@email.com',
-    curLat: '',
-    curLng: '',
-    prevLat: '',
-    prevLng: '',
-  },
+  places,
+  displayPlaces: [],
+  user,
   follows: [],
   favs: [],
   isAuth: false,
+  users,
 };
+
+// user: {
+//   id: '',
+//   imageUrl: '',
+//   name: '',
+//   curLat: '',
+//   curLng: '',
+//   prevLat: '',
+//   prevLng: '',
+// },

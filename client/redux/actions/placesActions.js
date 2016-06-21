@@ -1,3 +1,3 @@
-export function loadPlaces(places = { 123: { id: 1, placeName: 'Burger Joint' } }) {
+export function loadPlaces(places) {
   return { type: 'LOAD_PLACES', places };
 }

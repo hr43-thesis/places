@@ -5,13 +5,13 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import routes from './routes';
-import { loadPlaces } from './redux/actions/placesActions';
+// import { loadPlaces } from './redux/actions/placesActions';
 
 const store = configureStore();
 export const history = syncHistoryWithStore(browserHistory, store);
 
 
-store.dispatch(loadPlaces());
+// store.dispatch(loadPlaces());
 
 render(
   <Provider store={store}>
