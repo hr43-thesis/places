@@ -1,3 +1,3 @@
-export function searchUsers(users = ['Adam', 'Andrew', 'Jordan', 'Sepher']) {
+export function searchUsers(users) {
   return { type: 'FOLLOW_USER', users };
 }

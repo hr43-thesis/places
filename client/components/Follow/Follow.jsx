@@ -6,12 +6,16 @@ const Follow = (props) => (
   <div>
     <div>
       Test
-      <SearchUsers />
+      <SearchUsers users={props.users} />
     </div>
     <div>
       <FollowUsers />
     </div>
   </div>
 );
+
+Follow.propTypes = {
+  users: React.PropTypes.object,
+};
 
 export default Follow;
