@@ -7,7 +7,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import routes from './routes';
 // import { loadPlaces } from './redux/actions/placesActions';
 
-const store = configureStore();
+export const store = configureStore();
 export const history = syncHistoryWithStore(browserHistory, store);
 
 
