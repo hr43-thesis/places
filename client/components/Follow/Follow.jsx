@@ -5,7 +5,6 @@ import FollowUsers from './FollowUsers.jsx';
 const Follow = ({ displayUsers, handleSearchUser, handleFollowUser }) => (
   <div>
     <div>
-      {console.log(displayUsers)}
       <SearchUsers
         handleSearchUser={handleSearchUser}
       />

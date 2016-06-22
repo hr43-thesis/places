@@ -8,7 +8,7 @@ class SearchUsers extends React.Component {
           type="text"
           placeholder="Find a friend..."
           ref="search"
-          onKeyPress={() => this.props.handleSearchUser(this.refs.search.value)}
+          onChange={() => this.props.handleSearchUser(this.refs.search.value)}
         />
       </div>
     );

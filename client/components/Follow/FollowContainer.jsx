@@ -12,7 +12,6 @@ class FollowContainer extends React.Component {
   }
 
   handleSearchUser(input) {
-    console.log(`search val: ${input}`);
     this.props.searchUser(input);
   }
 
@@ -26,7 +25,6 @@ class FollowContainer extends React.Component {
   render() {
     return (
       <div>
-        {console.log(this.props)}
         <Follow
           {...this.props}
           handleSearchUser={this.handleSearchUser}

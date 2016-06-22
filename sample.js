@@ -49,7 +49,7 @@ export const users = [
   {
     id: 4,
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Andrzej_Person_Kancelaria_Senatu.jpg',
-    userName: 'Andrew Phavichitr',
+    name: 'Andrew Phavichitr',
     repCount: 30,
     email: 'Andrew@sample.com',
     curLat: '',
