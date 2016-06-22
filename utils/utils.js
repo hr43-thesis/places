@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const followUser = (userId) => {
-  axios.post(`/api/users/${userId}/follows`, {
+exports.followUser = (userId) => {
+  axios.post(`http://localhost:3000/api/users/${userId}/follows`, {
     userId,
   })
   .then(response => {
