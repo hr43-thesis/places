@@ -1,20 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const Nav = (props) => {
-  let nav = <nav>Login</nav>;
-  if (props.isAuth) {
-    nav = (
-      <nav>
-        <Link to="/home">Home</Link>
-      </nav>
-    );
-  }
-  return (nav);
-};
+const Nav = () => (
+  <nav>
+    <Link to="/places">Home</Link>
+    <Link to="/search">Search</Link>
+  </nav>
+);
 
 export default Nav;
 
-Nav.propTypes = {
-  isAuth: React.PropTypes.bool,
-};
+// Nav.propTypes = {
+//   isAuth: React.PropTypes.bool,
+// };
