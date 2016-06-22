@@ -1,6 +1,7 @@
 import initialState from './initialState';
 
-export default function followsReducer(state = initialState.follows, action) {
+export const followsReducer = (state = initialState.follows, action) => {
+  console.log(action.user);
   switch (action.type) {
     case 'FOLLOW_USER':
       return [...state, action.user];
@@ -8,4 +9,4 @@ export default function followsReducer(state = initialState.follows, action) {
     default:
       return state;
   }
-}
+};

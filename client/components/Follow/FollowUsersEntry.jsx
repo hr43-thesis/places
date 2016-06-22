@@ -6,7 +6,7 @@ const FollowUsersEntry = ({ user, handleFollowUser }) => (
 
 FollowUsersEntry.propTypes = {
   user: React.PropTypes.object,
-  handleFollowUser: React.PropTypes.object,
+  handleFollowUser: React.PropTypes.func,
 };
 
 export default FollowUsersEntry;

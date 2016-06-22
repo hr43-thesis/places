@@ -3,7 +3,7 @@ import FollowUsersEntry from './FollowUsersEntry.jsx';
 
 const FollowUsers = ({ displayUsers, handleFollowUser }) => (
   <div>
-    {displayUsers ? displayUsers.map((user, i) =>
+    {displayUsers.map((user, i) =>
       <div>
         <FollowUsersEntry
           key={i}
@@ -11,13 +11,13 @@ const FollowUsers = ({ displayUsers, handleFollowUser }) => (
           handleFollowUser={handleFollowUser}
         />
       </div>
-    ) : null}
+    )}
   </div>
 );
 
 FollowUsers.propTypes = {
-  displayUsers: React.PropTypes.object,
-  handleFollowUser: React.PropTypes.object,
+  displayUsers: React.PropTypes.array,
+  handleFollowUser: React.PropTypes.func,
 };
 
 export default FollowUsers;

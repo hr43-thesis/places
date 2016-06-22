@@ -1,6 +1,7 @@
 import initialState from './initialState';
 
-export default function displayUsersReducer(state = initialState.displayUsers, action) {
+export const displayUsersReducer = (state = initialState.displayUsers, action) => {
+  console.log(action.displayUsers);
   switch (action.type) {
     case 'SEARCH_USER':
       return state;
@@ -8,4 +9,4 @@ export default function displayUsersReducer(state = initialState.displayUsers, a
     default:
       return state;
   }
-}
+};

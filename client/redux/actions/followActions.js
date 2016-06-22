@@ -1,7 +1,9 @@
-export function searchUser(user) {
-  return { type: 'SEARCH_USER', user };
-}
+export const searchUser = (user) => ({
+  type: 'SEARCH_USER',
+  user,
+});
 
-export function followUser(user) {
-  return { type: 'FOLLOW_USER', user };
-}
+export const followUser = (user) => ({
+  type: 'FOLLOW_USER',
+  user,
+});

@@ -2,11 +2,11 @@ import React from 'react';
 import SearchUsers from './SearchUsers.jsx';
 import FollowUsers from './FollowUsers.jsx';
 
-const Follow = ({ users, displayUsers, handleSearchUser, handleFollowUser }) => (
+const Follow = ({ displayUsers, handleSearchUser, handleFollowUser }) => (
   <div>
     <div>
+      {console.log(displayUsers)}
       <SearchUsers
-        users={users}
         handleSearchUser={handleSearchUser}
       />
     </div>
@@ -20,10 +20,9 @@ const Follow = ({ users, displayUsers, handleSearchUser, handleFollowUser }) => 
 );
 
 Follow.propTypes = {
-  users: React.PropTypes.object,
-  displayUsers: React.PropTypes.object,
-  handleSearchUser: React.PropTypes.object,
-  handleFollowUser: React.PropTypes.object,
+  displayUsers: React.PropTypes.array,
+  handleSearchUser: React.PropTypes.func,
+  handleFollowUser: React.PropTypes.func,
 };
 
 export default Follow;
