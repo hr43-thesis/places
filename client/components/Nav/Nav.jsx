@@ -1,15 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { handleLogout } from '../../redux/actions/authActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-const Nav = () => (
+const Nav = (props) => (
   <nav>
     <Link to="/places">Home</Link>
     <Link to="/search">Search</Link>
+    <button onClick={() => { props.handleLogout(); }}> logout </button>
   </nav>
 );
 
-export default Nav;
+function mapDispatchToProps(dispatch) {
+  return {
+    handleLogout: bindActionCreators(handleLogout, dispatch),
+  };
+}
 
-// Nav.propTypes = {
+const mapStateToProps = function mapStateToProps(state) {
+  return {
+    isAuth: state.isAuth,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+
+Nav.propTypes = {
 //   isAuth: React.PropTypes.bool,
-// };
+  handleLogout: React.PropTypes.func,
+};
