@@ -4,13 +4,14 @@ import App from './components/App.jsx';
 import HomeContainer from './components/Home/HomeContainer.jsx';
 import LoginContainer from './components/Login/LoginContainer.jsx';
 import Auth from './components/HOC/Auth.jsx';
-
+import FollowContainer from './components/Follow/FollowContainer.jsx';
 
 export default (
   <Route path="">
     <Route path="/welcome" component={LoginContainer} />
     <Route path="/" component={Auth(App)} >
       <IndexRoute component={HomeContainer} />
+      <Route path="follow" component={FollowContainer} />
     </Route>
   </Route>
 );
