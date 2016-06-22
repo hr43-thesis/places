@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setAuth } from '../../redux/actions/authActions';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 
 function loginUser() {
   window.fbLogin = function fbLogin() {
@@ -36,11 +40,29 @@ function loginUser() {
   window.fbLogin();
 }
 
-const Login = () => (
+function mapDispatchToProps(dispatch) {
+  return {
+    setAuth: bindActionCreators(setAuth, dispatch),
+  };
+}
+
+const mapStateToProps = function mapStateToProps(state) {
+  return {
+    isAuth: state.isAuth,
+  };
+};
+
+const Login = (props) => (
   <div>
     <h1>Login Page</h1>
+    <button onClick={() => props.setAuth(true)}>Simulated Login</button>
+    <Link to="/">Go to index Route</Link>
     <button onClick={loginUser}>Login FB</button>
   </div>
 );
 
-export default Login;
+Login.propTypes = {
+  setAuth: React.PropTypes.func,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
