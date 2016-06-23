@@ -70,6 +70,7 @@ class Gmap extends Component {
 
   handleMapClick(e) {
     console.log('e is: ', e);
+<<<<<<< 506b453dd81e2bcb1dfbc09b7698216c82d30a4a
     this.props.hideAll();
   }
 
@@ -85,6 +86,21 @@ class Gmap extends Component {
     // this.setState({ places: newPlaces });
   }
 
+=======
+  }
+
+  // handleMarkerClick(marker) {
+  //   marker.showInfo = true;
+  //   console.log('marker clicked-->', marker);
+  //   this.setState(this.state);
+  // }
+
+  // handleMarkerClose(marker) {
+  //   marker.showInfo = false;
+  //   console.log('marker closed-->', marker);
+  //   this.setState(this.state);
+  // }
+>>>>>>> (env) Restoring gmap
   handleMarkerRightclick(index, event) {
       /*
        * All you modify is data, and the view is driven by data.
@@ -111,6 +127,7 @@ class Gmap extends Component {
     );
   }
 
+
   render() {
     const formattedLocations = this.props.displayPlaces.map(place => (
       // return the formatted object
@@ -132,6 +149,7 @@ class Gmap extends Component {
             <div
               style={{
                 width: '66%',
+
                 height: '100%',
               }}
             />
@@ -158,6 +176,7 @@ class Gmap extends Component {
                 );
                 return renderMarker;
               }
+
               )}
             </GoogleMap>
          }
@@ -186,4 +205,5 @@ Gmap.propTypes = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gmap);
 // export default Gmap;
+
 
