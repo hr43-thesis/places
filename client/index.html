@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <script src="auth/keys.js"></script>
+  <script type="text/javascript">
+    var apiSrc = 'https://maps.googleapis.com/maps/api/js?key=' + window.GMAP_SECRET;
+    document.write('<script type="text/javascript" src="' + apiSrc + '"></scr' + 'ipt>');
+  </script>
+
 </head>
 <body>
   <div id="app"></div>
