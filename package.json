@@ -4,7 +4,7 @@
   "description": "Places",
   "main": "webpack.config.js",
   "scripts": {
-    "startdev": "NODE_ENV=development nodemon server/devServer.js --ignore components",
+    "start": "NODE_ENV=development nodemon server/devServer.js --ignore components",
     "test": "mocha --reporter spec"
   },
   "repository": {

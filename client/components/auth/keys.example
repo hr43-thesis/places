@@ -1,0 +1,5 @@
+/** rename this file keys.js
+    add your google maps API key below
+*/
+
+window.GMAP_SECRET = 'YOUR_API_KEY_HERE';
