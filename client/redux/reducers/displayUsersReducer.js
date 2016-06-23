@@ -1,19 +1,35 @@
 import initialState from './initialState';
 
-export default function displayUsersReducer(state = initialState.displayUsers, action) {
+const indexOf = (allUsers, currUser) => {
+  for (let i = 0; i < allUsers.length; i++) {
+    if (allUsers[i].id === currUser.id) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+const removeCurrUser = (allUsers, user) => {
+  const index = indexOf(allUsers, user);
+  if (index > -1) {
+    allUsers.splice(index, 1);
+  }
+  return allUsers;
+};
+
+export default function displayUsersReducer(state = initialState.users, action) {
   let displayUsers = [];
-  console.log(action.user);
+  const allUsers = removeCurrUser(initialState.users, initialState.user);
   switch (action.type) {
     case 'SEARCH_USER':
-      if (!action.user) {
-        displayUsers = initialState.displayUsers;
-      } else {
-        // Bug: need to set to prev state when user has typo
-        state.forEach((user) => {
+      if (action.user) {
+        allUsers.forEach((user) => {
           if (user.name.includes(action.user)) {
             displayUsers.push(user);
           }
         });
+      } else {
+        displayUsers = allUsers;
       }
       return displayUsers;
 

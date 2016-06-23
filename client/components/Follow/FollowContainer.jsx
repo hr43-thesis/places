@@ -11,15 +11,27 @@ class FollowContainer extends React.Component {
     this.handleFollowUser = this.handleFollowUser.bind(this);
   }
 
+  getFollowedUser(followedId) {
+    let followedUser = null;
+    this.props.users.some((user) => {
+      if (user.id === followedId) {
+        followedUser = user;
+      }
+      return user.id === followedId;
+    });
+    return followedUser;
+  }
+
   handleSearchUser(input) {
     this.props.searchUser(input);
   }
 
-  handleFollowUser(userId) {
-    console.log(this.props);
-    const followedUser = utils.followUser(userId);
-    console.log(followedUser);
-    this.props.followUser(followedUser);
+  handleFollowUser(followedId) {
+    const userId = this.props.user.id;
+    utils.followUser(userId, followedId, () => {
+      const user = this.getFollowedUser(followedId);
+      this.props.followUser(user);
+    });
   }
 
   render() {
@@ -36,10 +48,14 @@ class FollowContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+  user: state.user,
+  users: state.users,
   displayUsers: state.displayUsers,
 });
 
 FollowContainer.propTypes = {
+  user: React.PropTypes.object,
+  users: React.PropTypes.array,
   searchUser: React.PropTypes.func,
   followUser: React.PropTypes.func,
 };
