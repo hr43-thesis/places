@@ -186,3 +186,4 @@ Gmap.propTypes = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gmap);
 // export default Gmap;
+
