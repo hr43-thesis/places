@@ -51,6 +51,7 @@ const mapStateToProps = (state) => ({
   user: state.user,
   users: state.users,
   displayUsers: state.displayUsers,
+  follows: state.follows,
 });
 
 FollowContainer.propTypes = {

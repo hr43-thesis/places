@@ -2,7 +2,7 @@ import React from 'react';
 import SearchUsers from './SearchUsers.jsx';
 import FollowUsers from './FollowUsers.jsx';
 
-const Follow = ({ displayUsers, handleSearchUser, handleFollowUser }) => (
+const Follow = ({ displayUsers, follows, handleSearchUser, handleFollowUser }) => (
   <div>
     <div>
       <SearchUsers
@@ -12,6 +12,7 @@ const Follow = ({ displayUsers, handleSearchUser, handleFollowUser }) => (
     <div>
       <FollowUsers
         displayUsers={displayUsers}
+        follows={follows}
         handleFollowUser={handleFollowUser}
       />
     </div>
@@ -20,6 +21,7 @@ const Follow = ({ displayUsers, handleSearchUser, handleFollowUser }) => (
 
 Follow.propTypes = {
   displayUsers: React.PropTypes.array,
+  follows: React.PropTypes.array,
   handleSearchUser: React.PropTypes.func,
   handleFollowUser: React.PropTypes.func,
 };
