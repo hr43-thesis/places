@@ -4,9 +4,9 @@ import App from './components/App.jsx';
 import HomeContainer from './components/Home/HomeContainer.jsx';
 import LoginContainer from './components/Login/LoginContainer.jsx';
 import Auth from './components/HOC/Auth.jsx';
-
 import FollowContainer from './components/Follow/FollowContainer.jsx';
 import MyPlaces from './components/Map/Gmap.jsx';
+import MyPlaces from './components/MyPlaces/MyPlaces.jsx';
 
 
 export default (
