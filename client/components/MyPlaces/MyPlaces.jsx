@@ -7,7 +7,13 @@ class MyPlaces extends React.Component {
     super(props);
     this.state = {
       style: 'style',
+      filterType: '',
     };
+  }
+
+  handleFilterType(e) {
+    console.log('e: ', e.target.firstChild.nodeValue);
+    console.log('this: ', this);
   }
 
   render() {
@@ -18,7 +24,11 @@ class MyPlaces extends React.Component {
           Filter will go here
         </div>
         <div className="2/3">
-          <Gmap />
+          <div>
+            <button onClick={(e) => { this.handleFilterType(e); }}> Starred </button>
+            <button onClick={(e) => { this.handleFilterType(e); }}> Pinned </button>
+          </div>
+          <Gmap filterType={this.state.filterType} />
         </div>
       </div>
     );
