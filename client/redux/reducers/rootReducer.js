@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 import places from './placesReducer';
 import auth from './authReducer';
 import user from './userReducer';
@@ -6,7 +7,7 @@ import users from './usersReducer';
 import follows from './followsReducer';
 import favs from './favsReducer';
 import displayPlaces from './displayPlacesReducer';
-import { routerReducer } from 'react-router-redux';
+import displayUsers from './displayUsersReducer';
 
 const rootReducer = combineReducers({
   places,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   favs,
   auth,
   users,
+  displayUsers,
   routing: routerReducer,
 });
 
