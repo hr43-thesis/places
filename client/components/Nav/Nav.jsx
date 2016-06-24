@@ -8,6 +8,7 @@ const Nav = (props) => (
   <nav>
     <Link to="/places">Home</Link>
     <Link to="/search">Search</Link>
+    <Link to="/myplaces">My Places</Link>
     <button onClick={() => { props.handleLogout(); }}> logout </button>
   </nav>
 );
