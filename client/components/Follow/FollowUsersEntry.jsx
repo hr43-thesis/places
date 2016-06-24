@@ -5,10 +5,10 @@ const FollowUsersEntry = ({ user, followed, handleFollowUser }) => {
   let symbol = '';
   if (followed) {
     classProp = 'btn-floating btn-small waves-effect waves-light red';
-    symbol = 'x';
+    symbol = 'remove';
   } else {
     classProp = 'btn-floating btn-small waves-effect waves-light green';
-    symbol = '+';
+    symbol = 'add';
   }
 
   return (

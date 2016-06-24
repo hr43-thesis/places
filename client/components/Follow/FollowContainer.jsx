@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Follow from './Follow.jsx';
 import * as actions from '../../redux/actions/followActions';
-import utils from '../../../utils/utils';
+import api from '../../../utils/api';
 
 class FollowContainer extends React.Component {
   constructor() {
@@ -28,7 +28,7 @@ class FollowContainer extends React.Component {
 
   handleFollowUser(followedId) {
     const userId = this.props.user.id;
-    utils.followUser(userId, followedId, () => {
+    api.followUser(userId, followedId, () => {
       const user = this.getFollowedUser(followedId);
       this.props.followUser(user);
     });
