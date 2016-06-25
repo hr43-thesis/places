@@ -3,42 +3,7 @@ import { GoogleMapLoader, GoogleMap, Marker, InfoWindow } from 'react-google-map
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionsCreators from '../../redux/actions/displayPlacesActions';
-// import { Link } from 'react-router';
 
-// const defaultMarkers = [
-//   {
-//     position: {
-//       lat: 37.7761391,
-//       lng: -122.3897686,
-//     },
-//     key: 'The Yard',
-//     defaultAnimation: 2,
-//   },
-//   {
-//     position: {
-//       lat: 37.7903982,
-//       lng: -122.4616293,
-//     },
-//     key: 'Presidio Golf Course',
-//     defaultAnimation: 2,
-//   },
-//   {
-//     position: {
-//       lat: 37.7757447,
-//       lng: -122.4088245,
-//     },
-//     key: 'Raven Night Club',
-//     defaultAnimation: 2,
-//   },
-//   {
-//     position: {
-//       lat: 37.7753907,
-//       lng: -122.3966198,
-//     },
-//     key: 'Home',
-//     defaultAnimation: 2,
-//   },
-// ];
 
 class Gmap extends Component {
   constructor(props) {
@@ -55,9 +20,8 @@ class Gmap extends Component {
   }
 
   componentWillMount() {
-    // something about updating dispay views  the store
-    // filter by id, make sure showInfo is false... shouldnt be an issue
-    console.log('this.props is:', this.props);
+    // update display places to be all user's places initially
+    // me is place holder
     this.props.updateDisplayPlaces(this.props.places, 'me');
   }
 
@@ -68,53 +32,18 @@ class Gmap extends Component {
     });
   }
 
-  handleMapClick(e) {
-    console.log('e is: ', e);
-<<<<<<< 506b453dd81e2bcb1dfbc09b7698216c82d30a4a
+
+  handleMapClick() {
     this.props.hideAll();
   }
 
   handleMarkerClick(marker, index) {
-    // e.preventDefault();
-    // marker.showInfo = true;
-    console.log('CLICKEEDDd');
-    console.log(this, marker, index);
     this.props.updateShowing(index);
-    // const newPlaces = this.state.places;
-    // newPlaces[index].showInfo = !newPlaces[index].showInfo;
-    console.log('marker clicked-->', marker);
-    // this.setState({ places: newPlaces });
   }
 
-=======
-  }
 
-  // handleMarkerClick(marker) {
-  //   marker.showInfo = true;
-  //   console.log('marker clicked-->', marker);
-  //   this.setState(this.state);
-  // }
-
-  // handleMarkerClose(marker) {
-  //   marker.showInfo = false;
-  //   console.log('marker closed-->', marker);
-  //   this.setState(this.state);
-  // }
->>>>>>> (env) Restoring gmap
-  handleMarkerRightclick(index, event) {
-      /*
-       * All you modify is data, and the view is driven by data.
-       * This is so called data-driven-development. (And yes, it's now in
-       * web front end and even with google maps API.)
-       */
-    console.log('event is: ', event);
-    console.log('this is: ', this);
-    console.log('index is: ', index);
-  }
 
   renderInfoWindow(ref, marker, index) {
-    console.log('rendering infoWindow');
-    console.log('rendering infoWindow, marker is ', marker);
     return (
       <InfoWindow
         key={`${ref}_info_window`}
@@ -148,8 +77,7 @@ class Gmap extends Component {
           containerElement={
             <div
               style={{
-                width: '66%',
-
+                width: '100%',
                 height: '100%',
               }}
             />
@@ -190,6 +118,7 @@ const mapStateToProps = (state) => (
   {
     places: state.places,
     displayPlaces: state.displayPlaces,
+    favs: state.favs,
   }
 );
 
@@ -204,6 +133,38 @@ Gmap.propTypes = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gmap);
-// export default Gmap;
 
 
+//   {
+//     position: {
+//       lat: 37.7761391,
+//       lng: -122.3897686,
+//     },
+//     key: 'The Yard',
+//     defaultAnimation: 2,
+//   },
+//   {
+//     position: {
+//       lat: 37.7903982,
+//       lng: -122.4616293,
+//     },
+//     key: 'Presidio Golf Course',
+//     defaultAnimation: 2,
+//   },
+//   {
+//     position: {
+//       lat: 37.7757447,
+//       lng: -122.4088245,
+//     },
+//     key: 'Raven Night Club',
+//     defaultAnimation: 2,
+//   },
+//   {
+//     position: {
+//       lat: 37.7753907,
+//       lng: -122.3966198,
+//     },
+//     key: 'Home',
+//     defaultAnimation: 2,
+//   },
+// ];

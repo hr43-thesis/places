@@ -16,6 +16,9 @@ export default function displayPlacesReducer(state = initialState.displayPlaces,
     }
 
     case 'UPDATE_SHOWING': {
+      console.log('ABOUT TO UPDATE_SHOWING');
+      console.log('state is: ', state);
+      console.log('action is: ', action);
       const i = action.index;
       return state.map((place, index) => {
         if (index === i) {
