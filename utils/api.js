@@ -2,7 +2,7 @@ import axios from 'axios';
 // temp serverURL until env props are created
 const serverUrl = 'http://localhost:7000';
 const api = {
-  followUser(userId, followedId) {
+  followUser(userId, followedId, followed) {
     return axios({
       url: `/api/users/${userId}/follows`,
       method: 'post',
@@ -10,6 +10,7 @@ const api = {
       withCredentials: true,
       data: {
         followedId,
+        followed,
       },
     });
   },

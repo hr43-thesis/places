@@ -35,9 +35,9 @@ class FollowContainer extends React.Component {
     this.getFollows();
   }
 
-  handleFollowUser(followedId) {
+  handleFollowUser(followedId, followed) {
     const userId = this.props.user.id;
-    api.followUser(userId, followedId)
+    api.followUser(userId, followedId, followed)
     .then(() => {
       console.log('Got response back from server.');
       const user = this.getFollowedUser(followedId);
