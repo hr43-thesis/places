@@ -41,8 +41,6 @@ class Gmap extends Component {
     this.props.updateShowing(index);
   }
 
-
-
   renderInfoWindow(ref, marker, index) {
     return (
       <InfoWindow
