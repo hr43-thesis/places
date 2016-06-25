@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionsCreators from '../../redux/actions/displayPlacesActions';
 
-
-
 class MyPlaces extends React.Component {
   constructor(props) {
     super(props);

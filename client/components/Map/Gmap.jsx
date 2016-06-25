@@ -38,12 +38,10 @@ class Gmap extends Component {
   }
 
   handleMarkerClick(marker, index) {
-<<<<<<< HEAD
     this.props.updateShowing(index);
   }
 
   renderInfoWindow(ref, marker, index) {
-==
     return (
       <InfoWindow
         key={`${ref}_info_window`}
@@ -132,8 +130,6 @@ Gmap.propTypes = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gmap);
-
-
 
 //   {
 //     position: {
