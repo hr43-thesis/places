@@ -18,7 +18,6 @@ export function setAuth(fbToken) {
     })
     .then((action) => {
       if (action.type === 'SET_AUTH') {
-        console.log('before reducer:', userData);
         dispatch(loadUser(userData));
         dispatch(push('/'));
       }
@@ -27,11 +26,9 @@ export function setAuth(fbToken) {
 }
 
 export function handleLogout() {
-  console.log('called logout');
   return (dispatch) => {
     axios.get('http://localhost:7000/logout', { withCredentials: true })
     .then((data) => {
-      console.log(data);
       if (data.status === 200) {
         // window.FB.logout();
         return dispatch({
