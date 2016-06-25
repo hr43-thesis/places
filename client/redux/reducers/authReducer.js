@@ -9,3 +9,4 @@ export default function authReducer(state = initialState.isAuth, action) {
       return state;
   }
 }
+
