@@ -16,7 +16,7 @@ const FollowUsersEntry = ({ user, followed, handleFollowUser }) => {
       <span>{user.name} </span>
       <a
         className={classProp}
-        onClick={() => handleFollowUser(user.id)}
+        onClick={() => handleFollowUser(user.id, followed)}
       >
         <i className="material-icons">{symbol}</i>
       </a>

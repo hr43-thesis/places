@@ -22,15 +22,29 @@ class FollowContainer extends React.Component {
     return followedUser;
   }
 
-  handleSearchUser(input) {
-    this.props.searchUser(input);
+  // temp method for get follows
+  getFollows() {
+    api.getFollows(this.props.user.id)
+    .then(response => {
+      this.props.getFollows(response.data);
+    });
   }
 
-  handleFollowUser(followedId) {
+  handleSearchUser(input) {
+    this.props.searchUser(input);
+    this.getFollows();
+  }
+
+  handleFollowUser(followedId, followed) {
     const userId = this.props.user.id;
-    api.followUser(userId, followedId, () => {
+    api.followUser(userId, followedId, followed)
+    .then(() => {
+      console.log('Got response back from server.');
       const user = this.getFollowedUser(followedId);
       this.props.followUser(user);
+    })
+    .catch(error => {
+      console.log(error);
     });
   }
 
@@ -59,9 +73,13 @@ FollowContainer.propTypes = {
   users: React.PropTypes.array,
   searchUser: React.PropTypes.func,
   followUser: React.PropTypes.func,
+  // temp prop validation
+  getFollows: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps,
   { searchUser: actions.searchUser,
     followUser: actions.followUser,
+    // move getFollows out after refactor
+    getFollows: actions.getFollows,
   })(FollowContainer);
