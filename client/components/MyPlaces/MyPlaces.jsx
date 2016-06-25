@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as actionsCreators from '../../redux/actions/displayPlacesActions';
 
 
+
 class MyPlaces extends React.Component {
   constructor(props) {
     super(props);
@@ -76,3 +77,4 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => bindActionCreators(actionsCreators, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyPlaces);
+
