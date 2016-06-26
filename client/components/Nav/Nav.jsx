@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 
 const Nav = (props) => (
   <nav>
-    <Link to="/places">Home</Link>
+    <Link to="/">Home</Link>
     <Link to="/follow">Search</Link>
     <Link to="/myplaces">My Places</Link>
     <button onClick={() => { props.handleLogout(); }}> logout </button>
@@ -28,6 +28,5 @@ const mapStateToProps = function mapStateToProps(state) {
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
 
 Nav.propTypes = {
-//   isAuth: React.PropTypes.bool,
   handleLogout: React.PropTypes.func,
 };

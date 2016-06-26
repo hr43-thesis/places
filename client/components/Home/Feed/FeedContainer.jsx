@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Feed from './Feed.jsx';
+import { bindActionCreators } from 'redux';
+import { loadDisplayPlaces } from '../../../redux/actions/displayPlacesActions';
 
 class FeedContainer extends Component {
-  componentDidMount() {
+  componentWillMount() {
 
   }
   render() {
@@ -16,7 +18,22 @@ class FeedContainer extends Component {
 const mapStateToProps = function mapStateToProps(state) {
   return {
     places: state.places,
+    displayPlaces: state.displayPlaces,
+    userId: state.user.id,
   };
 };
 
-export default connect(mapStateToProps)(FeedContainer);
+const mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    loadDisplayPlaces: bindActionCreators(loadDisplayPlaces, dispatch),
+  };
+};
+
+FeedContainer.propTypes = {
+  loadDisplayPlaces: React.PropTypes.func,
+  places: React.PropTypes.array,
+  displayPlaces: React.PropTypes.array,
+  userId: React.PropTypes.number,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedContainer);

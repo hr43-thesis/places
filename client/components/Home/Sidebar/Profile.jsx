@@ -6,8 +6,4 @@ const Profile = () => (
   </div>
 );
 
-// Rec.propTypes = {
-//   places: React.PropTypes.object,
-// };
-
 export default Profile;

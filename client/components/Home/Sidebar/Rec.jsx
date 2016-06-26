@@ -6,8 +6,4 @@ const Rec = () => (
   </div>
 );
 
-// Rec.propTypes = {
-//   places: React.PropTypes.object,
-// };
-
 export default Rec;
