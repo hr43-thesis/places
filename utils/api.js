@@ -22,6 +22,14 @@ const api = {
       withCredentials: true,
     });
   },
+  getPlaces(userId) {
+    return axios({
+      url: `/api/users/${userId}/places`,
+      method: 'get',
+      baseURL: serverUrl,
+      withCredentials: true,
+    });
+  },
 };
 
 export default api;
