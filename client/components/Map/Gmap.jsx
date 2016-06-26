@@ -60,10 +60,10 @@ class Gmap extends Component {
       // return the formatted object
       {
         position: {
-          lat: place.lat,
-          lng: place.lng,
+          lat: +place.lat,
+          lng: +place.lng,
         },
-        key: place.name,
+        key: place.userPlaceId,
         defaultAnimation: 2,
         showInfo: place.showInfo,
       }
