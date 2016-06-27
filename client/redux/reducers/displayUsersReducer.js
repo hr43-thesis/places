@@ -1,30 +1,19 @@
 import initialState from './initialState';
-
-const indexOf = (allUsers, currUser) => {
-  for (let i = 0; i < allUsers.length; i++) {
-    if (allUsers[i].id === currUser.id) {
-      return i;
-    }
-  }
-  return -1;
-};
-
-const removeCurrUser = (allUsers, user) => {
-  const index = indexOf(allUsers, user);
-  if (index > -1) {
-    allUsers.splice(index, 1);
-  }
-  return allUsers;
-};
+import { store } from '../../client';
 
 export default function displayUsersReducer(state = initialState.users, action) {
   let displayUsers = [];
-  const allUsers = removeCurrUser(initialState.users, initialState.user);
+  let allUsers = [];
+
+  if (store) {
+    allUsers = [...store.getState().users, ...store.getState().follows];
+  }
+
   switch (action.type) {
     case 'SEARCH_USER':
       if (action.user) {
         allUsers.forEach((user) => {
-          if (user.name.includes(action.user)) {
+          if (user.name.toLowerCase().includes(action.user.toLowerCase())) {
             displayUsers.push(user);
           }
         });
@@ -32,6 +21,9 @@ export default function displayUsersReducer(state = initialState.users, action) 
         displayUsers = allUsers;
       }
       return displayUsers;
+
+    case 'UPDATE_DISPLAY_USERS':
+      return action.users;
 
     default:
       return state;
