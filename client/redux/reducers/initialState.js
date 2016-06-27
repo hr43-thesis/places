@@ -1,13 +1,13 @@
-import { user, users, places } from '../../../sample.js';
+import { places } from '../../../sample.js';
 
 export default {
   places,
   displayPlaces: [],
-  user,
+  user: [],
   follows: [],
   favs: [],
   isAuth: false,
-  users,
+  users: [],
   displayUsers: [],
 };
 
