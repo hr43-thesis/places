@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import App from './App.jsx';
 import { connect } from 'react-redux';
-import api from '../../utils/api';
+import api from '../utils/api';
 import { bindActionCreators } from 'redux';
 import { loadPlaces } from '../redux/actions/placesActions';
 import { loadDisplayPlaces } from '../redux/actions/displayPlacesActions';
