@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Follow from './Follow.jsx';
 import * as actions from '../../redux/actions/followActions';
-import api from '../../../utils/api';
+import api from '../../utils/api';
 
 class FollowContainer extends React.Component {
   constructor() {

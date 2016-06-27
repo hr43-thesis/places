@@ -1,6 +1,5 @@
 import React from 'react';
 import Nav from './Nav/Nav.jsx';
-// import Login from './Login/LoginContainer.jsx';
 
 const App = (props) => (
   <div>

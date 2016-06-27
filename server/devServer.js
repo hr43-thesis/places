@@ -21,8 +21,6 @@ app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output
 app.use(webpackHotMiddleware(compiler));
 
 app.use(express.static('./dist'));
-app.use('/scripts', express.static(path.join(__dirname, '/../node_modules/jquery/dist/')));
-app.use('/scripts', express.static(path.join(__dirname, '/../node_modules/materialize-css/dist/')));
 
 app.use('*', (req, res) => {
   res.sendFile(path.resolve('client/index.html'));
