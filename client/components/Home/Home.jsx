@@ -5,12 +5,12 @@ import Rec from './Sidebar/Rec.jsx';
 // import axios from 'axios';
 
 const Home = () => (
-  <div>
-    <div className="sidebar">
+  <div className="row">
+    <div className="col s4">
       <Profile />
       <Rec />
     </div>
-    <div>
+    <div className="col s8">
       <FeedContainer />
     </div>
   </div>
