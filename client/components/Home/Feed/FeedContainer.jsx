@@ -6,7 +6,7 @@ import { loadDisplayPlaces } from '../../../redux/actions/displayPlacesActions';
 
 class FeedContainer extends Component {
   componentWillMount() {
-
+    this.props.loadDisplayPlaces(this.props.places, this.props.userId);
   }
   render() {
     return (
@@ -19,7 +19,7 @@ const mapStateToProps = function mapStateToProps(state) {
   return {
     places: state.places,
     displayPlaces: state.displayPlaces,
-    userId: state.user.id,
+    userId: 1, // state.user.id,
   };
 };
 

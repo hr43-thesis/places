@@ -3,9 +3,11 @@ import FeedEntryContainer from './FeedEntryContainer.jsx';
 
 const Feed = (props) => (
   <div>
-    <h1>Feeds Page</h1>
-    {props.displayPlaces.map((place) => (
-      <FeedEntryContainer key={place.userPlaceId} place={place} />
+    <h5 className="card-panel blue-grey lighten-5 z-depth-1">
+      Explore what's happening on Places:
+    </h5>
+    {props.displayPlaces.map((place, index) => (
+      <FeedEntryContainer key={index} place={place} />
       )
     )}
   </div>

@@ -6,11 +6,25 @@ import { bindActionCreators } from 'redux';
 
 const Nav = (props) => (
   <nav>
-    <Link to="/">Home</Link>
-    <Link to="/follow">Search</Link>
-    <Link to="/myplaces">My Places</Link>
-    <button onClick={() => { props.handleLogout(); }}> logout </button>
+    <div className="nav-wrapper">
+      <a href="#" className="brand-logo">Logo</a>
+      <ul id="nav-mobile" className="right hide-on-med-and-down">
+        <li><Link to="/"><i className="material-icons left">list</i>Home</Link></li>
+        <li>
+          <Link to="/myplaces">
+            <i className="material-icons left">person_pin</i>My Places
+          </Link>
+        </li>
+        <li><Link to="/follow"><i className="material-icons left">search</i>Search</Link></li>
+        <li>
+          <a href="" onClick={() => { props.handleLogout(); }}>
+            <i className="material-icons left">input</i>Logout
+          </a>
+        </li>
+      </ul>
+    </div>
   </nav>
+
 );
 
 function mapDispatchToProps(dispatch) {

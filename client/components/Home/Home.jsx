@@ -1,16 +1,15 @@
 import React from 'react';
 import FeedContainer from './Feed/FeedContainer.jsx';
 import Profile from './Sidebar/Profile.jsx';
-import Rec from './Sidebar/Rec.jsx';
-// import axios from 'axios';
+import RecContainer from './Sidebar/RecContainer.jsx';
 
 const Home = () => (
   <div className="row">
-    <div className="col s4">
+    <div className="col s3">
       <Profile />
-      <Rec />
+      <RecContainer />
     </div>
-    <div className="col s8">
+    <div className="col s9">
       <FeedContainer />
     </div>
   </div>
