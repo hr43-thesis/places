@@ -6,6 +6,11 @@ export default function favsReducer(state = initialState.favs, action) {
       return action.data;
     }
 
+    case 'STAR_PLACE': {
+      // add the placeId to the favs state as an object {displayPlaceId: action.id}
+      return state;
+    }
+
     default:
       return state;
   }

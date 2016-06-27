@@ -16,3 +16,24 @@ export function setFavs(userId) {
     });
   };
 }
+
+export function starPlace(userId, placeId, userPlaceId) {
+  console.log('called starPlace with userId, placeId: ', userId, placeId, userPlaceId);
+  return (dispatch) => {
+    axios.post(`http://localhost:7000/api/users/${userId}/favs`, {
+      withCredentials: true,
+      placeId,
+      userPlaceId,
+    })
+    .then((response) => {
+      console.log(response);
+      if (response.status === 201) {
+        return dispatch({
+          type: 'STAR_PLACE',
+          userPlaceId,
+        });
+      }
+      return null;
+    });
+  };
+}
