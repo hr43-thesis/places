@@ -8,7 +8,11 @@ const FeedEntry = (props) => (
       </div>
       <div className="col s10">
         <span className="black-text">
-          <h5>{props.place.name}</h5>
+          <h5 className="valign-wrapper">
+            {props.place.name}
+            {' '}
+            <i className="material-icons">star</i>
+          </h5>
           {' '}
           {props.place.note}
           {' - '}
@@ -21,6 +25,7 @@ const FeedEntry = (props) => (
 
 FeedEntry.propTypes = {
   place: React.PropTypes.object,
+  handleAddFav: React.PropTypes.func,
 };
 
 export default FeedEntry;
