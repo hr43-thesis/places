@@ -30,6 +30,18 @@ const api = {
       withCredentials: true,
     });
   },
+  addFav(userId, placeId, userPlaceId) {
+    return axios({
+      url: `/api/users/${userId}/favs`,
+      method: 'post',
+      baseURL: serverUrl,
+      withCredentials: true,
+      data: {
+        placeId,
+        userPlaceId,
+      },
+    });
+  },
 };
 
 export default api;
