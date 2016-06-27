@@ -14,6 +14,7 @@ const FollowUsersEntry = ({ user, followed, handleFollowUser }) => {
   return (
     <div>
       <span>{user.name} </span>
+      <span>{user.repCount} </span>
       <a
         className={classProp}
         onClick={() => handleFollowUser(user.id, followed)}
