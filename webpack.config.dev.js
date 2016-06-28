@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const env = require('./env/clientDev');
 
 module.exports = {
   devtool: 'inline-sourcemap',
@@ -20,6 +21,13 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        PROTOCOL: JSON.stringify(env.PROTOCOL),
+        HOST: JSON.stringify(env.HOST),
+        PORT: JSON.stringify(env.PORT),
+      },
+    }),
   ],
   module: {
     preLoaders: [

@@ -1,6 +1,7 @@
 import axios from 'axios';
-// temp serverURL until env props are created
-const serverUrl = 'http://localhost:7000';
+
+const serverUrl = `${process.env.PROTOCOL}${process.env.HOST}:${process.env.PORT}`;
+
 const api = {
   followUser(userId, followedId, followed) {
     return axios({
