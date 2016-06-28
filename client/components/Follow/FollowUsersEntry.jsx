@@ -13,14 +13,34 @@ const FollowUsersEntry = ({ user, followed, handleFollowUser }) => {
 
   return (
     <div>
-      <span>{user.name} </span>
-      <span>{user.repCount} </span>
-      <a
-        className={classProp}
-        onClick={() => handleFollowUser(user.id, followed)}
-      >
-        <i className="material-icons">{symbol}</i>
-      </a>
+      <div className="card-panel grey lighten-5 z-depth-1 hoverable">
+        <div className="row valign-wrapper">
+          <div className="col s1">
+            <a
+              className={classProp}
+              onClick={() => handleFollowUser(user.id, followed)}
+            >
+              <i className="material-icons">{symbol}</i>
+            </a>
+          </div>
+          <div className="col s3 push-s5 offset-s2">
+            <img src={user.imageUrl} alt="" className="responsive-img" />
+          </div>
+          <div className="col s1">
+            <i className="material-icons">stars</i>
+            {user.repCount}
+          </div>
+          <div className="col s5 pull-s5 offset-s1">
+            <span className="black-text">
+              <h5 className="valign-wrapper">
+                {user.name}
+              </h5>
+              {' '}
+              {user.email}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

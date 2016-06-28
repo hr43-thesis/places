@@ -3,13 +3,14 @@ import SearchUsers from './SearchUsers.jsx';
 import FollowUsers from './FollowUsers.jsx';
 
 const Follow = ({ displayUsers, follows, handleSearchUser, handleFollowUser }) => (
-  <div>
-    <div>
+  // <div className="container">
+  <div className="row">
+    <div className="col s8 push-s2">
       <SearchUsers
         handleSearchUser={handleSearchUser}
       />
     </div>
-    <div>
+    <div className="col s8 push-s2">
       <FollowUsers
         displayUsers={displayUsers}
         follows={follows}
@@ -17,6 +18,7 @@ const Follow = ({ displayUsers, follows, handleSearchUser, handleFollowUser }) =
       />
     </div>
   </div>
+  // </div>
 );
 
 Follow.propTypes = {

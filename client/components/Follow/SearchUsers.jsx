@@ -5,6 +5,7 @@ class SearchUsers extends React.Component {
     return (
       <div>
         <input
+          // style={{ position: 'fixed' }}
           type="text"
           placeholder="Find a friend..."
           ref="search"
