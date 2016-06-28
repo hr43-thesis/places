@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import api from '../../../utils/api';
 import FeedEntry from './FeedEntry.jsx';
+import * as actionCreators from '../../../redux/actions/favsActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class FeedEntryContainer extends Component {
   componentDidMount() {
 
   }
-  handleAddFav(userId, placeId, userPlaceId) {
-    console.log(userId, placeId, userPlaceId);
-    api.addFav(userId, placeId, userPlaceId)
-      .then((response) => {
-        console.log('Response from adding to favs:', response);
-      })
-      .catch((err) => {
-        console.log('There was an error:', err);
-      });
-  }
   render() {
     return (
-      <FeedEntry {...this.props} handleAddFav={this.handleAddFav} />
+      <FeedEntry {...this.props} />
     );
   }
 }
 
-export default FeedEntryContainer;
+const mapStateToProps = function mapStateToProps(state) {
+  return {
+    userId: state.user.id,
+  };
+};
+
+const mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actionCreators, dispatch),
+  };
+};
+
+FeedEntryContainer.propTypes = {
+  userId: React.PropTypes.number,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(FeedEntryContainer);

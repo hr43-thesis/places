@@ -11,7 +11,17 @@ const FeedEntry = (props) => (
           <h5 className="valign-wrapper">
             {props.place.name}
             {' '}
-            <i className="material-icons">star</i>
+            <a style={{ cursor: 'pointer' }}><i
+              className="material-icons"
+              onClick={() =>
+                props.actions.addFav(
+                  props.userId,
+                  props.place.placeId,
+                  props.place.userPlaceId
+                )}
+            >
+              star
+            </i></a>
           </h5>
           {' '}
           {props.place.note}
@@ -25,7 +35,8 @@ const FeedEntry = (props) => (
 
 FeedEntry.propTypes = {
   place: React.PropTypes.object,
-  handleAddFav: React.PropTypes.func,
+  actions: React.PropTypes.object,
+  userId: React.PropTypes.number,
 };
 
 export default FeedEntry;
