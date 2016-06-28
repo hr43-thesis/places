@@ -12,3 +12,8 @@ export const getFollows = (follows) => ({
   type: 'GET_FOLLOWS',
   follows,
 });
+
+export const getFollowPlaces = (places) => ({
+  type: 'GET_FOLLOW_PLACES',
+  places,
+});

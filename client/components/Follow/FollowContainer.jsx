@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Follow from './Follow.jsx';
 import * as actions from '../../redux/actions/followActions';
+import { combineUsers } from '../../redux/actions/displayUsersActions';
+import { removeFollowedUser } from '../../redux/actions/usersActions';
 import api from '../../utils/api';
 
 class FollowContainer extends React.Component {
@@ -11,39 +13,29 @@ class FollowContainer extends React.Component {
     this.handleFollowUser = this.handleFollowUser.bind(this);
   }
 
-  getFollowedUser(followedId) {
-    let followedUser = null;
-    this.props.users.some((user) => {
-      if (user.id === followedId) {
-        followedUser = user;
-      }
-      return user.id === followedId;
-    });
-    return followedUser;
-  }
-
-  // temp method for get follows
-  getFollows() {
-    api.getFollows(this.props.user.id)
-    .then(response => {
-      this.props.getFollows(response.data);
-    });
+  componentWillMount() {
+    this.props.combineUsers();
   }
 
   handleSearchUser(input) {
     this.props.searchUser(input);
-    this.getFollows();
   }
 
   handleFollowUser(followedId, followed) {
     const userId = this.props.user.id;
     api.followUser(userId, followedId, followed)
-    .then(() => {
-      console.log('Got response back from server.');
-      const user = this.getFollowedUser(followedId);
-      this.props.followUser(user);
+    .then(res => {
+      console.log(`${res.status}: Got successful response back from server.`);
+      this.props.followUser(res.data);
+      this.props.removeFollowedUser(followedId);
+      api.getFollowPlaces(followedId)
+      .then(resp => {
+        console.log(`${resp.status}: Got successful response back from server.`);
+        this.props.getFollowPlaces(resp.data);
+      });
     })
     .catch(error => {
+      // Add error handling
       console.log(error);
     });
   }
@@ -73,13 +65,15 @@ FollowContainer.propTypes = {
   users: React.PropTypes.array,
   searchUser: React.PropTypes.func,
   followUser: React.PropTypes.func,
-  // temp prop validation
-  getFollows: React.PropTypes.func,
+  getFollowPlaces: React.PropTypes.func,
+  combineUsers: React.PropTypes.func,
+  removeFollowedUser: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps,
   { searchUser: actions.searchUser,
     followUser: actions.followUser,
-    // move getFollows out after refactor
-    getFollows: actions.getFollows,
+    getFollowPlaces: actions.getFollowPlaces,
+    combineUsers,
+    removeFollowedUser,
   })(FollowContainer);

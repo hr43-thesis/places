@@ -5,6 +5,9 @@ export default function placesReducer(state = initialState.places, action) {
     case 'LOAD_PLACES':
       return action.places;
 
+    case 'GET_FOLLOW_PLACES':
+      return [...state, ...action.places];
+
     default:
       return state;
   }

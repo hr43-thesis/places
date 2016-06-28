@@ -4,3 +4,9 @@ export function updateDisplayUsers(users) {
     users,
   };
 }
+
+export function combineUsers() {
+  return {
+    type: 'COMBINE_USERS',
+  };
+}

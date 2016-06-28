@@ -42,6 +42,14 @@ const api = {
       },
     });
   },
+  getFollowPlaces(followedId) {
+    return axios({
+      url: `/api/follows/${followedId}/places`,
+      method: 'get',
+      baseURL: serverUrl,
+      withCredentials: true,
+    });
+  },
 };
 
 export default api;

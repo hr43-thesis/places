@@ -8,6 +8,13 @@ export function updateUsers(users) {
   };
 }
 
+export function removeFollowedUser(followedId) {
+  return {
+    type: 'REMOVE_FOLLOWED_USER',
+    followedId,
+  };
+}
+
 export function fetchUsers() {
   return (dispatch) =>
     axios.get('http://localhost:7000/api/users', { withCredentials: true })
