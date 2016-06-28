@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { loadPlaces } from '../redux/actions/placesActions';
 import { loadDisplayPlaces } from '../redux/actions/displayPlacesActions';
 import { fetchUsers } from '../redux/actions/usersActions';
+import { getFollows } from '../redux/actions/followActions';
 
 class AppContainer extends Component {
 
@@ -23,6 +24,13 @@ class AppContainer extends Component {
       });
 
     this.props.fetchUsers();
+    api.getFollows(this.props.userId)
+    .then(res => {
+      this.props.getFollows(res.data);
+    })
+    .catch(err => {
+      console.log('There was an error: ', err);
+    });
   }
   componentDidMount() {
   }
@@ -38,7 +46,7 @@ class AppContainer extends Component {
 const mapStateToProps = function mapStateToProps(state) {
   return {
     isAuth: state.isAuth,
-    userId: 1, // set to 1 for testing, should be: state.user.id,
+    userId: state.user.id, // set to 1 for testing, should be: state.user.id,
   };
 };
 
@@ -47,6 +55,7 @@ const mapDispatchToProps = function mapDispatchToProps(dispatch) {
     loadPlaces: bindActionCreators(loadPlaces, dispatch),
     loadDisplayPlaces: bindActionCreators(loadDisplayPlaces, dispatch),
     fetchUsers: bindActionCreators(fetchUsers, dispatch),
+    getFollows: bindActionCreators(getFollows, dispatch),
   };
 };
 
@@ -55,6 +64,7 @@ AppContainer.propTypes = {
   loadPlaces: React.PropTypes.func,
   loadDisplayPlaces: React.PropTypes.func,
   fetchUsers: React.PropTypes.func,
+  getFollows: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

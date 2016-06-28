@@ -25,6 +25,9 @@ export default function displayUsersReducer(state = initialState.users, action) 
     case 'UPDATE_DISPLAY_USERS':
       return action.users;
 
+    case 'COMBINE_USERS':
+      return allUsers;
+
     default:
       return state;
   }
