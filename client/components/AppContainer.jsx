@@ -7,6 +7,7 @@ import { loadPlaces } from '../redux/actions/placesActions';
 import { loadDisplayPlaces } from '../redux/actions/displayPlacesActions';
 import { fetchUsers } from '../redux/actions/usersActions';
 import { getFollows } from '../redux/actions/followActions';
+import { loadFavs } from '../redux/actions/favsActions';
 
 class AppContainer extends Component {
 
@@ -23,7 +24,6 @@ class AppContainer extends Component {
         console.log('There was an error:', err);
       });
 
-    this.props.fetchUsers();
     api.getFollows(this.props.userId)
     .then(res => {
       this.props.getFollows(res.data);
@@ -31,8 +31,8 @@ class AppContainer extends Component {
     .catch(err => {
       console.log('There was an error: ', err);
     });
-  }
-  componentDidMount() {
+    this.props.fetchUsers();
+    this.props.loadFavs(this.props.userId);
   }
 
   render() {
@@ -56,6 +56,7 @@ const mapDispatchToProps = function mapDispatchToProps(dispatch) {
     loadDisplayPlaces: bindActionCreators(loadDisplayPlaces, dispatch),
     fetchUsers: bindActionCreators(fetchUsers, dispatch),
     getFollows: bindActionCreators(getFollows, dispatch),
+    loadFavs: bindActionCreators(loadFavs, dispatch),
   };
 };
 
@@ -65,6 +66,7 @@ AppContainer.propTypes = {
   loadDisplayPlaces: React.PropTypes.func,
   fetchUsers: React.PropTypes.func,
   getFollows: React.PropTypes.func,
+  loadFavs: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
