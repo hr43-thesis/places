@@ -51,6 +51,15 @@ const api = {
       withCredentials: true,
     });
   },
+  getRecommendations(userId) {
+    console.log('user id', userId);
+    return axios({
+      url: `/api/recommendations/user/${userId}/places`,
+      method: 'get',
+      baseURL: serverUrl,
+      withCredentials: true,
+    });
+  },
 };
 
 export default api;
