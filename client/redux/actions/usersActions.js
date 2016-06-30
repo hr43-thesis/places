@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { updateDisplayUsers } from './displayUsersActions';
 
+const serverUrl = `${process.env.PROTOCOL}${process.env.HOST}:${process.env.PORT}`;
+
 export function updateUsers(users) {
   return {
     type: 'LOAD_USERS',
@@ -17,7 +19,7 @@ export function removeFollowedUser(followedId) {
 
 export function fetchUsers() {
   return (dispatch) =>
-    axios.get('http://localhost:7000/api/users', { withCredentials: true })
+    axios.get(`${serverUrl}/api/users`, { withCredentials: true })
     .then(({ data }) => {
       console.log(data);
       dispatch(updateUsers(data));

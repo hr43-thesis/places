@@ -1,0 +1,7 @@
+module.exports = {
+  NODE_ENV: 'development',
+  PROTOCOL: 'http://',
+  HOST: 'localhost',
+  PORT: 7000,
+  FB_CLIENT_ID: '',
+};

@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+const serverUrl = `${process.env.PROTOCOL}${process.env.HOST}:${process.env.PORT}`;
+
 export function loadFavs(userId) {
   return (dispatch) => {
-    axios.get(`http://localhost:7000/api/users/${userId}/favs`, { withCredentials: true })
+    axios.get(`${serverUrl}/api/users/${userId}/favs`, { withCredentials: true })
     .then((response) => {
       console.log('Response in get req for Favs...', response);
       if (response.status === 200) {
@@ -18,7 +20,7 @@ export function loadFavs(userId) {
 
 export function addFav(userId, placeId, userPlaceId) {
   return (dispatch) => {
-    axios.post(`http://localhost:7000/api/users/${userId}/favs`, {
+    axios.post(`${serverUrl}/api/users/${userId}/favs`, {
       withCredentials: true,
       placeId,
       userPlaceId,
