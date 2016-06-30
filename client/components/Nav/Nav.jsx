@@ -14,8 +14,8 @@ class Nav extends React.Component {
     return (
       <div className="navbar-fixed">
         <nav>
-          <div className="nav-wrapper">
-            <a href="#!" className="brand-logo">Logo</a>
+          <div className="nav-wrapper light-blue darken-2">
+            <a href="#!" className="brand-logo">Places</a>
             <a href="#" data-activates="mobile-demo" className="button-collapse">
               <i className="material-icons">menu</i>
             </a>

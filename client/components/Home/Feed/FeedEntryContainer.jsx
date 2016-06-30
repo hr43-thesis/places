@@ -5,12 +5,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 class FeedEntryContainer extends Component {
-  componentDidMount() {
-
+  constructor() {
+    super();
+    this.handleModalClick = this.handleModalClick.bind(this);
+  }
+  handleModalClick(placeId) {
+    window.$(`#modal-${placeId}`).openModal();
   }
   render() {
     return (
-      <FeedEntry {...this.props} />
+      <FeedEntry {...this.props} handleModalClick={this.handleModalClick} />
     );
   }
 }
