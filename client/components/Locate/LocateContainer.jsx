@@ -55,7 +55,6 @@ class Locate extends React.Component {
           </div>
           <div className="col s8">
             <FriendMap
-              filterType={this.state.filterType}
               displayUsers={this.props.locate || []}
               hideAll={this.props.hideAll}
               updateShowing={this.props.updateShowing}

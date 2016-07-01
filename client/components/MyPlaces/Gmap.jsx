@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actionsCreators from '../../redux/actions/displayPlacesActions';
 
 class Gmap extends Component {
   constructor(props) {
@@ -17,11 +14,17 @@ class Gmap extends Component {
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleViewChanged = this.handleViewChanged.bind(this);
   }
-
   componentWillMount() {
     // update display places to be all user's places initially
     // me is place holder
-    this.props.updateDisplayPlaces(this.props.places, 'me');
+    // this.props.updateDisplayPlaces(this.props.places, 'me');
+    console.log('Map is about to mount---------');
+  }
+  componentWillReceiveProps(nextProps) {
+    // this.setState({
+    //   // set something
+    // });
+    console.log('inside comp willrecieve, props are:', nextProps);
   }
 
   handleViewChanged() {
@@ -47,7 +50,8 @@ class Gmap extends Component {
         onCloseclick={(e) => this.handleMarkerClick(marker, index, e)}
       >
         <div>
-          {marker.key}
+          {marker.name}
+          {marker.note}
         </div>
       </InfoWindow>
     );
@@ -94,7 +98,6 @@ class Gmap extends Component {
                     {...marker}
                     ref={ref}
                     onClick={(event) => this.handleMarkerClick(marker, index, event)}
-                    onRightclick={(event) => this.handleMarkerRightclick(index, event)}
                   >
                     {marker.showInfo ? this.renderInfoWindow(ref, marker, index) : null}
                   </Marker>
@@ -110,25 +113,16 @@ class Gmap extends Component {
   }
 }
 
-const mapStateToProps = (state) => (
-  {
-    places: state.places,
-    displayPlaces: state.displayPlaces,
-    favs: state.favs,
-  }
-);
-
-const mapDispatchToProps = (dispatch) => bindActionCreators(actionsCreators, dispatch);
-
 Gmap.propTypes = {
   places: React.PropTypes.array,
   displayPlaces: React.PropTypes.array,
   updateDisplayPlaces: React.PropTypes.func,
   updateShowing: React.PropTypes.func,
   hideAll: React.PropTypes.func,
+  fitlerType: React.PropTypes.string,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Gmap);
+export default Gmap;
 
 //   {
 //     position: {

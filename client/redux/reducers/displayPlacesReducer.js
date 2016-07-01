@@ -12,11 +12,22 @@ export default function displayPlacesReducer(state = initialState.displayPlaces,
     }
 
     case 'FILTER_PLACES': {
+      // myplaces - places ave userId and userPlacesId
       const filterItem = action.filter;
       const places = action.places;
-      let result = places.filter(place => typeof place.id === 'number' || filterItem);
-      result = result.map(place => Object.assign({}, place, { showInfo: false }));
-      return result;
+      const userId = action.userId;
+      let result;
+      if (filterItem === 'Pinned') {
+        result = places.filter(place => (
+          place.userId === userId
+        ));
+        result = result.map(place => Object.assign({}, place, { showInfo: false }));
+      } else if (filterItem === 'Starred') {
+        // check if a user has fav'ed a place
+        result = places.filter(place => action.favs.indexOf(place.userPlaceId) !== -1);
+        result = result.map(place => Object.assign({}, place, { showInfo: false }));
+      }
+      return result || state;
     }
 
     case 'UPDATE_SHOWING': {

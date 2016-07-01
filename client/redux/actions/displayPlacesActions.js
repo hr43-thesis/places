@@ -6,8 +6,8 @@ export function loadDisplayPlaces(places, userId) {
   };
 }
 
-export function updateDisplayPlaces(places, filter) {
-  return { type: 'FILTER_PLACES', places, filter };
+export function updateDisplayPlaces(places, userId, filter, favs) {
+  return { type: 'FILTER_PLACES', places, userId, filter, favs };
 }
 
 export function updateShowing(index) {
