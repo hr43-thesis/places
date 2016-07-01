@@ -18,7 +18,6 @@ class MyPlaces extends React.Component {
   handleFilterType(e) {
     // place holder
     const filter = e.target.firstChild.nodeValue;
-    console.log('Filter is afte click: ', filter);
     // this.setState({ filterType: e.target.firstChild.nodeValue });
     this.props.updateDisplayPlaces(this.props.places, this.props.userId,
       filter, this.props.favs);

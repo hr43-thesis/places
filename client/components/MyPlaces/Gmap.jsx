@@ -10,6 +10,7 @@ class Gmap extends Component {
         lat: 37.7835896,
         lng: -122.4092149,
       },
+      mounting: true,
     };
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleViewChanged = this.handleViewChanged.bind(this);
@@ -18,13 +19,13 @@ class Gmap extends Component {
     // update display places to be all user's places initially
     // me is place holder
     // this.props.updateDisplayPlaces(this.props.places, 'me');
-    console.log('Map is about to mount---------');
+    // console.log('Map is about to mount---------');
   }
   componentWillReceiveProps(nextProps) {
-    // this.setState({
-    //   // set something
-    // });
-    console.log('inside comp willrecieve, props are:', nextProps);
+    this.setState({
+      mounting: nextProps,
+    });
+    // console.log('inside comp willrecieve, props are:', nextProps);
   }
 
   handleViewChanged() {
@@ -50,7 +51,8 @@ class Gmap extends Component {
         onCloseclick={(e) => this.handleMarkerClick(marker, index, e)}
       >
         <div>
-          {marker.name}
+          <h4>{marker.name}</h4>
+          <br />
           {marker.note}
         </div>
       </InfoWindow>
@@ -59,18 +61,18 @@ class Gmap extends Component {
 
 
   render() {
-    const formattedLocations = this.props.displayPlaces.map((place, index) => (
-      // return the formatted object
-      {
-        position: {
-          lat: +place.lat,
-          lng: +place.lng,
-        },
-        key: index,
-        defaultAnimation: 2,
-        showInfo: place.showInfo,
-      }
-    ));
+    // const formattedLocations = this.props.displayPlaces.map((place, index) => (
+    //   // return the formatted object
+    //   {
+    //     position: {
+    //       lat: +place.lat,
+    //       lng: +place.lng,
+    //     },
+    //     key: index,
+    //     defaultAnimation: 2,
+    //     showInfo: place.showInfo,
+    //   }
+    // ));
 
     return (
       <section style={{ height: '800px' }}>
@@ -91,11 +93,17 @@ class Gmap extends Component {
               onClick={this.handleMapClick}
               onBoundsChanged={this.handleViewChanged}
             >
-              {formattedLocations.map((marker, index) => {
+              {this.props.displayPlaces.map((marker, index) => {
                 const ref = `marker_${index}`;
                 const renderMarker = (
                   <Marker
                     {...marker}
+                    position={{
+                      lat: +marker.lat,
+                      lng: +marker.lng,
+                    }}
+                    key={index}
+                    defaultAnimation={2}
                     ref={ref}
                     onClick={(event) => this.handleMarkerClick(marker, index, event)}
                   >
