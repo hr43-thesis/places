@@ -4,12 +4,9 @@ export default function displayPlacesReducer(state = initialState.locate, action
   switch (action.type) {
 
     case 'LOAD_LOCATE': {
-      // filter displayPlaces to exclude user's own
-      // action.follows
-      const userId = action.userId;
-      const places = action.places;
-      const displayPlaces = places.filter((place) => place.userId !== userId);
-      return displayPlaces;
+      return action.follows.map(follow => (
+        Object.assign({}, follow, { showInfo: false })
+      ));
     }
 
     case 'FILTER_LOCATE': {
@@ -21,21 +18,21 @@ export default function displayPlacesReducer(state = initialState.locate, action
       return result;
     }
 
-    case 'UPDATE_SHOWING': {
+    case 'UPDATE_SHOWING_LOCATE': {
       const i = action.index;
-      return state.map((place, index) => {
+      return state.map((follow, index) => {
         if (index === i) {
-          return Object.assign({}, place, {
-            showInfo: !place.showInfo,
+          return Object.assign({}, follow, {
+            showInfo: !follow.showInfo,
           });
         }
-        return place;
+        return follow;
       });
     }
 
-    case 'HIDE_ALL': {
-      return state.map(place => (
-          Object.assign({}, place, {
+    case 'HIDE_ALL_LOCATE': {
+      return state.map(follow => (
+          Object.assign({}, follow, {
             showInfo: false,
           })
       ));

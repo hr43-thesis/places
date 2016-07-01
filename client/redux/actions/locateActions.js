@@ -11,9 +11,9 @@ export function updateLocate(follows, filter) {
 }
 
 export function updateShowing(index) {
-  return { type: 'UPDATE_SHOWING', index };
+  return { type: 'UPDATE_SHOWING_LOCATE', index };
 }
 
 export function hideAll() {
-  return { type: 'HIDE_ALL' };
+  return { type: 'HIDE_ALL_LOCATE' };
 }
