@@ -6,6 +6,7 @@ import LoginContainer from './components/Login/LoginContainer.jsx';
 import Auth from './components/HOC/Auth.jsx';
 import FollowContainer from './components/Follow/FollowContainer.jsx';
 import MyPlaces from './components/MyPlaces/MyPlaces.jsx';
+import Locate from './components/Locate/LocateContainer.jsx';
 
 
 export default (
@@ -15,6 +16,7 @@ export default (
       <IndexRoute component={Home} />
       <Route path="follow" component={FollowContainer} />
       <Route path="myplaces" component={MyPlaces} />
+      <Route path="locate" component={Locate} />
     </Route>
   </Route>
 );
