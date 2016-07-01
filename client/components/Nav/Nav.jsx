@@ -20,6 +20,20 @@ class Nav extends React.Component {
               <i className="material-icons">menu</i>
             </a>
             <ul className="right hide-on-med-and-down">
+              {this.props.isAdmin ?
+                <li>
+                  <Link to="/admin/bots">
+                    <i className="material-icons left">android</i>Bot Control
+                  </Link>
+                </li> : null
+              }
+              {this.props.isAdmin ?
+                <li>
+                  <Link to="/admin/stats">
+                    <i className="material-icons left">assessment</i>App Stats
+                  </Link>
+                </li> : null
+              }
               <li><Link to="/"><i className="material-icons left">list</i>Home</Link></li>
               <li>
                 <Link to="/myplaces">
@@ -37,6 +51,20 @@ class Nav extends React.Component {
               </li>
             </ul>
             <ul id="mobile-demo" className="side-nav">
+              {this.props.isAdmin ?
+                <li>
+                  <Link to="/admin/bots">
+                    <i className="material-icons left">android</i>Bot Control
+                  </Link>
+                </li> : null
+              }
+              {this.props.isAdmin ?
+                <li>
+                  <Link to="/admin/stats">
+                    <i className="material-icons left">assessment</i>App Stats
+                  </Link>
+                </li> : null
+              }
               <li><Link to="/"><i className="material-icons left">list</i>Home</Link></li>
               <li>
                 <Link to="/myplaces">
@@ -66,6 +94,7 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = function mapStateToProps(state) {
   return {
     isAuth: state.isAuth,
+    isAdmin: state.isAdmin,
   };
 };
 
@@ -73,4 +102,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(Nav);
 
 Nav.propTypes = {
   handleLogout: React.PropTypes.func,
+  isAdmin: React.PropTypes.bool,
 };

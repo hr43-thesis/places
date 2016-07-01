@@ -7,6 +7,7 @@ export default {
   follows: [],
   favs: [],
   isAuth: false,
+  isAdmin: true,
   users: [],
   displayUsers: [],
   locate: [],
