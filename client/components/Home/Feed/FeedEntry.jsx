@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactPlayer from 'react-player';
 
 const modalStyle = {
   'max-width': '500',
@@ -9,7 +10,7 @@ const FeedEntry = (props) => (
   <div>
     <div id={`modal-${props.place.placeId}`} className="modal" style={modalStyle}>
       <div className="modal-content">
-        <img src={props.place.imageUrl} alt={props.place.name} className="responsive-img" />
+        <ReactPlayer width={450} url={props.place.videoUrl} playing />
         <p>
           {props.place.note}
           {' - '}
