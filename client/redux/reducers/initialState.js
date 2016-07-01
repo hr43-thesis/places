@@ -11,4 +11,5 @@ export default {
   users: [],
   displayUsers: [],
   locate: [],
+  bots: [],
 };

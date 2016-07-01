@@ -26,6 +26,8 @@ module.exports = {
         PROTOCOL: JSON.stringify(env.PROTOCOL),
         HOST: JSON.stringify(env.HOST),
         PORT: JSON.stringify(env.PORT),
+        BOT_SERVICE: JSON.stringify(env.BOT_SERVICE),
+        BOT_PORT: JSON.stringify(env.BOT_PORT),
       },
     }),
   ],

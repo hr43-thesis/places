@@ -7,7 +7,7 @@ import Auth from './components/HOC/Auth.jsx';
 import FollowContainer from './components/Follow/FollowContainer.jsx';
 import MyPlaces from './components/MyPlaces/MyPlaces.jsx';
 import Locate from './components/Locate/LocateContainer.jsx';
-
+import BotsContainer from './components/Bots/BotsContainer.jsx';
 
 export default (
   <Route path="">
@@ -17,6 +17,7 @@ export default (
       <Route path="follow" component={FollowContainer} />
       <Route path="myplaces" component={MyPlaces} />
       <Route path="locate" component={Locate} />
+      <Route path="bots" component={BotsContainer} />
     </Route>
   </Route>
 );

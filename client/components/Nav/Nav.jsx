@@ -22,14 +22,14 @@ class Nav extends React.Component {
             <ul className="right hide-on-med-and-down">
               {this.props.isAdmin ?
                 <li>
-                  <Link to="/admin/bots">
+                  <Link to="/bots">
                     <i className="material-icons left">android</i>Bot Control
                   </Link>
                 </li> : null
               }
               {this.props.isAdmin ?
                 <li>
-                  <Link to="/admin/stats">
+                  <Link to="/stats">
                     <i className="material-icons left">assessment</i>App Stats
                   </Link>
                 </li> : null
@@ -53,14 +53,14 @@ class Nav extends React.Component {
             <ul id="mobile-demo" className="side-nav">
               {this.props.isAdmin ?
                 <li>
-                  <Link to="/admin/bots">
+                  <Link to="/bots">
                     <i className="material-icons left">android</i>Bot Control
                   </Link>
                 </li> : null
               }
               {this.props.isAdmin ?
                 <li>
-                  <Link to="/admin/stats">
+                  <Link to="/stats">
                     <i className="material-icons left">assessment</i>App Stats
                   </Link>
                 </li> : null

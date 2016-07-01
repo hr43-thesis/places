@@ -10,6 +10,7 @@ import displayPlaces from './displayPlacesReducer';
 import displayUsers from './displayUsersReducer';
 import locate from './locateReducer';
 import isAdmin from './adminReducer';
+import bots from './botsReducer';
 
 const rootReducer = combineReducers({
   places,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   users,
   displayUsers,
   locate,
+  bots,
   routing: routerReducer,
 });
 
