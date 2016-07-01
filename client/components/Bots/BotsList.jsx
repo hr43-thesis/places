@@ -1,14 +1,14 @@
 import React from 'react';
 import BotEntry from './BotEntry.jsx';
 
-const BotsList = (props) => (
+const BotsList = ({ bots, handlePost }) => (
   <div>
-    {console.log(props)}
-    {props.bots.map((bot, i) => (
+    {bots.map((bot, i) => (
       <div>
         <BotEntry
           key={i}
           bot={bot}
+          handlePost={handlePost}
         />
       </div>
       )
@@ -19,7 +19,7 @@ const BotsList = (props) => (
 BotsList.propTypes = {
   bots: React.PropTypes.array,
   follows: React.PropTypes.array,
-  handleFollowUser: React.PropTypes.func,
+  handlePost: React.PropTypes.func,
 };
 
 export default BotsList;

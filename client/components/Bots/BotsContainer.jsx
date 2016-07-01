@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Bots from './Bots.jsx';
-// import * as actions from '../../redux/actions/followActions';
+import { startPosting, stopPosting } from '../../redux/actions/botsActions';
+
 
 class BotsContainer extends React.Component {
   // constructor() {
   //   super();
-  //   // this.handleSearchUser = this.handleSearchUser.bind(this);
+  //   // this.handleStart = this.handleStart.bind(this);
   //   // this.handleFollowUser = this.handleFollowUser.bind(this);
   // }
 
@@ -14,11 +16,20 @@ class BotsContainer extends React.Component {
     // this.props.combineUsers();
   }
 
+  handlePost(botId, posting) {
+    if (posting) {
+      this.props.stopPosting(botId);
+    } else {
+      this.props.startPosting(botId);
+    }
+  }
+
   render() {
     return (
       <div>
         <Bots
           {...this.props}
+          handlePost={(botId, posting) => this.handlePost(botId, posting)}
         />
       </div>
     );
@@ -27,10 +38,19 @@ class BotsContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   bots: state.bots,
+
 });
 
+function mapDispatchToProps(dispatch) {
+  return {
+    startPosting: bindActionCreators(startPosting, dispatch),
+    stopPosting: bindActionCreators(stopPosting, dispatch),
+  };
+}
+
 BotsContainer.propTypes = {
-  bots: React.PropTypes.array,
+  startPosting: React.PropTypes.func,
+  stopPosting: React.PropTypes.func,
 };
 
-export default connect(mapStateToProps)(BotsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(BotsContainer);

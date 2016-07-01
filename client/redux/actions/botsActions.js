@@ -4,7 +4,6 @@ const serverUrl = `${process.env.PROTOCOL}${process.env.BOT_SERVICE}:${process.e
 
 export function getBots() {
   return (dispatch) => {
-    console.log('getting bots?');
     axios.get(`${serverUrl}/api/users`, { withCredentials: true })
     .then(({ status, data }) => {
       if (status === 200) {
@@ -21,5 +20,61 @@ export function getBots() {
   //       dispatch(push('/'));
   //     }
   //   });
+  };
+}
+
+export function startPosting(userId) {
+  return (dispatch) => {
+    const config = {
+      url: `${serverUrl}/api/users/post`,
+      method: 'POST',
+      data: {
+        userId,
+        interval: 10000,
+      },
+      withCredentials: true,
+    };
+
+
+    axios(config)
+    .then(({ status, data }) => {
+      console.log(data);
+      if (status === 200) {
+        return dispatch({
+          type: 'SET_POSTING',
+          posting: data.posting,
+          userId,
+        });
+      }
+      return null;
+    });
+  };
+}
+
+export function stopPosting(userId) {
+  return (dispatch) => {
+    const config = {
+      url: `${serverUrl}/api/users/post/stop`,
+      method: 'POST',
+      data: {
+        userId,
+        interval: 10000,
+      },
+      withCredentials: true,
+    };
+
+
+    axios(config)
+    .then(({ status, data }) => {
+      console.log(data);
+      if (status === 200) {
+        return dispatch({
+          type: 'SET_POSTING',
+          posting: data.posting,
+          userId,
+        });
+      }
+      return null;
+    });
   };
 }

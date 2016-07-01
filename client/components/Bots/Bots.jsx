@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBots from './SearchBots.jsx';
 import BotsList from './BotsList.jsx';
 
-const Bots = ({ bots, displayUsers, follows, handleSearchUser, handleFollowUser }) => (
+const Bots = ({ bots, handlePost, follows, handleSearchUser, handleFollowUser }) => (
   // <div className="container">
   <div className="row">
     <div className="col s8 push-s2">
@@ -14,7 +14,7 @@ const Bots = ({ bots, displayUsers, follows, handleSearchUser, handleFollowUser 
     <div className="col s8 push-s2">
       <BotsList
         bots={bots}
-        displayUsers={displayUsers}
+        handlePost={handlePost}
         follows={follows}
         handleFollowUser={handleFollowUser}
       />
@@ -25,7 +25,7 @@ const Bots = ({ bots, displayUsers, follows, handleSearchUser, handleFollowUser 
 
 Bots.propTypes = {
   bots: React.PropTypes.array,
-  displayUsers: React.PropTypes.array,
+  handlePost: React.PropTypes.func,
   follows: React.PropTypes.array,
   handleSearchUser: React.PropTypes.func,
   handleFollowUser: React.PropTypes.func,
