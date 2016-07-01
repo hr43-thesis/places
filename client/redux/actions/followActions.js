@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const serverUrl = `${process.env.PROTOCOL}${process.env.HOST}:${process.env.PORT}`;
+
 export const searchUser = (user) => ({
   type: 'SEARCH_USER',
   user,
@@ -20,19 +22,25 @@ export const getFollowPlaces = (places) => ({
   places,
 });
 
-export function getLocationInfo() {
+export function getLocationInfo(follows) {
+  // might need to modify follows
+  const basicFollows = follows.map(person => person.id);
   return (dispatch) => {
-    axios.get(`http://localhost:7000/api/users/${userId}/favs`, { withCredentials: true })
+    axios.post(`${serverUrl}/api/locate`, {
+      withCredentials: true,
+      basicFollows,
+    })
     .then((response) => {
-      console.log('Response in get req for Favs...', response);
+      console.log('Response in get req for followloc...', response.data);
       if (response.status === 200) {
+        console.log('DISPATCHING');
         return dispatch({
-          type: 'LOAD_FAVS',
+          type: 'UPDATE_FOLLOWS_LOCATION',
           data: response.data,
         });
       }
       return null;
     });
   };
-};
+}
 

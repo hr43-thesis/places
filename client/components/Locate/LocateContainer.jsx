@@ -1,8 +1,7 @@
 import React from 'react';
-// import Gmap from '../Map/Gmap.jsx';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import * as actionsCreators from '../../redux/actions/displayPlacesActions';
+import { bindActionCreators } from 'redux';
+import * as followActions from '../../redux/actions/followActions';
 import FriendMap from './FriendMap.jsx';
 
 class Locate extends React.Component {
@@ -29,10 +28,15 @@ class Locate extends React.Component {
     this.props.updateShowing(index);
   }
 
+  testButton() {
+    this.props.getLocationInfo(this.props.follows);
+  }
+
   render() {
     return (
       <div>
         <h1>My Places</h1>
+        <button onClick={() => this.testButton()}>Update locations</button>
         <div className="row">
           <div className="col s4">
             <div className="section">
@@ -67,6 +71,8 @@ Locate.propTypes = {
   updateDisplayPlaces: React.PropTypes.func,
   updateShowing: React.PropTypes.func,
   hideAll: React.PropTypes.func,
+  follows: React.PropTypes.array,
+  getLocationInfo: React.PropTypes.func,
 };
 
 const mapStateToProps = (state) => (
@@ -74,10 +80,11 @@ const mapStateToProps = (state) => (
     places: state.places,
     displayPlaces: state.displayPlaces,
     favs: state.favs,
+    follows: state.follows,
   }
 );
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(actionsCreators, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators(followActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Locate);
 

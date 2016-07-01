@@ -69,7 +69,6 @@ class FriendMap extends Component {
   }
 
   moveMarkers() {
-    console.log('this inside moveMarkers: ', this);
     let movedData = [...this.state.testData];
     movedData = movedData.map(user => {
       const newUser = Object.assign({}, user, {
@@ -166,7 +165,7 @@ class FriendMap extends Component {
                   <Polyline
                     path={path}
                     key={index}
-                    ref={ref}            
+                    ref={ref}
                     options={{
                       strokeColor: '#FF0000',
                       strokeOpacity: 1.0,
