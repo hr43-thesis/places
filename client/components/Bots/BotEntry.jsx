@@ -39,19 +39,23 @@ const BotEntry = (props) => {
             </a>
           </div>
           <div className="col s3 push-s5 offset-s2">
-            <img src={props.bot.imageUrl} alt="" className="responsive-img" />
+            <img
+              src={props.bot.imageUrl}
+              alt=""
+              className="responsive-img"
+            />
           </div>
-          <div className="col s1">
-            <i className="material-icons">stars</i>
-            {props.bot.location}
-          </div>
-          <div className="col s5 pull-s5 offset-s1">
+          <div className="col s5 pull-s4 offset-s1">
             <span className="black-text">
               <h5 className="valign-wrapper">
                 {props.bot.name}
               </h5>
-              {' '}
-              {JSON.stringify(props.bot.posting)}
+              {props.bot.location ?
+                <span> <strong> Posting from: </strong> {props.bot.location} </span> :
+                <span> <strong> Origin: </strong> {props.bot.origin}
+                  <br /> <strong> Destination: </strong> {props.bot.destination}
+                </span>
+              }
             </span>
           </div>
         </div>

@@ -2,15 +2,17 @@ import axios from 'axios';
 
 const serverUrl = `${process.env.PROTOCOL}${process.env.BOT_SERVICE}:${process.env.BOT_PORT}`;
 
-export function addBot(type) {
+export function addBot(type, location, origin, destination) {
   return (dispatch) => {
     const config = {
       url: `${serverUrl}/api/users/create`,
       method: 'POST',
       data: {
-        location: 'SF',
         interval: 10000,
         type,
+        location,
+        origin,
+        destination,
       },
       withCredentials: true,
     };

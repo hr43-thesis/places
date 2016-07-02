@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBots from './SearchBots.jsx';
+// import SearchBots from './SearchBots.jsx';
 import BotsList from './BotsList.jsx';
 
 class Bots extends React.Component {
@@ -31,18 +31,23 @@ class Bots extends React.Component {
   }
 
   render() {
-    const { bots, handlePost, addBot, handleSearchUser, handleMoving, botsList } = this.props;
+    const { bots, handlePost, addBot, handleMoving, botsList } = this.props;
     return (
       // <div className="container">
       <div className="row">
         <div className="col s8 push-s2">
           <h1> Bot list </h1>
           <div>
-            <form action="#">
+            <form
+              action="#"
+              style={{
+                textAlign: 'center',
+                marginBot: '1%',
+              }}
+            >
               <p>
                 <input
                   ref="0"
-                  name="group1"
                   type="radio"
                   id="post"
                   onClick={(e) => this.handleClick(e)}
@@ -52,7 +57,6 @@ class Bots extends React.Component {
               <p>
                 <input
                   ref="1"
-                  name="group2"
                   type="radio"
                   id="move"
                   onClick={(e) => this.handleClick(e)}
@@ -60,35 +64,45 @@ class Bots extends React.Component {
                 <label htmlFor="move">Moving Bot</label>
               </p>
             </form>
-            <a
-              className="btn-floating btn-small waves-effect waves-light green"
-              onClick={() => {
-                console.log('origin: ', this.refs);
-
-                // console.log('origin: ', this.refs.origin.value);
-                // console.log('destination: ', this.refs.destination.value);
-                console.log('post center: ', this.refs.postCenter.value);
-                if (botsList.moveBot) {
-                  addBot('moving');
-                } else {
-                  addBot('posting');
-                }
-              }
-              }
+            <div
+              className="col s2"
+              style={{
+                textAlign: 'center',
+                marginTop: '3%',
+              }}
             >
-              <i className="material-icons">add</i>
-            </a>
-            <span> Add Bot </span>
+              <a
+                className="btn-floating btn-small waves-effect waves-light green"
+                onClick={() => {
+                  console.log('origin: ', this.refs);
+
+                  if (botsList.moveBot) {
+                    const origin = this.refs.origin.value.trim();
+                    const destination = this.refs.destination.value.trim();
+                    addBot('moving', null, origin, destination);
+                    this.refs.destination.value = '';
+                    this.refs.origin.value = '';
+                  } else {
+                    const postCenter = this.refs.postCenter.value.trim();
+                    addBot('posting', postCenter);
+                    this.refs.postCenter.value = '';
+                  }
+                }
+                }
+              >
+                <i className="material-icons">add</i>
+              </a>
+            </div>
             {botsList.moveBot ?
               <div className="row">
-                <form className="col s12">
+                <form className="col s10">
                   <div className="row">
-                    <div className="input-field col s6">
+                    <div className="input-field col s5">
                       <i className="material-icons prefix">location_on</i>
                       <input ref="origin" id="icon_prefix" type="text" className="validate" />
                       <label htmlFor="icon_prefix">Origin</label>
                     </div>
-                    <div className="input-field col s6">
+                    <div className="input-field col s5">
                       <i className="material-icons prefix">location_on</i>
                       <input
                         ref="destination"
@@ -104,21 +118,21 @@ class Bots extends React.Component {
             }
             {botsList.postBot ?
               <div className="row">
-                <form className="col s12">
+                <form className="col s10">
                   <div className="row">
-                    <div className="input-field col s6">
+                    <div className="input-field col s5">
                       <i className="material-icons prefix">person_pin</i>
                       <input ref="postCenter" id="icon_prefix" type="text" className="validate" />
-                      <label htmlFor="icon_prefix">Post Center</label>
+                      <label htmlFor="icon_prefix">Post Location</label>
                     </div>
                   </div>
                 </form>
               </div> : null
             }
           </div>
-          <SearchBots
+          { /* <SearchBots
             handleSearchUser={handleSearchUser}
-          />
+          /> */ }
         </div>
         <div className="col s8 push-s2">
           <BotsList
