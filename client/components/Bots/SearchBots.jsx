@@ -7,7 +7,7 @@ class SearchUsers extends React.Component {
         <input
           // style={{ position: 'fixed' }}
           type="text"
-          placeholder="Find a friend..."
+          placeholder="Find a bot..."
           ref="search"
           onChange={() => this.props.handleSearchUser(this.refs.search.value)}
         />
