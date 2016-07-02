@@ -3,6 +3,12 @@ import React from 'react';
 import BotsList from './BotsList.jsx';
 
 class Bots extends React.Component {
+  componentWillUnmount() {
+    this.props.toggleBotSelect({
+      moveBot: false,
+      postBot: false,
+    });
+  }
 
   handleClick(e) {
     if (e.target === this.refs[0]) {
@@ -64,35 +70,37 @@ class Bots extends React.Component {
                 <label htmlFor="move">Moving Bot</label>
               </p>
             </form>
-            <div
-              className="col s2"
-              style={{
-                textAlign: 'center',
-                marginTop: '3%',
-              }}
-            >
-              <a
-                className="btn-floating btn-small waves-effect waves-light green"
-                onClick={() => {
-                  console.log('origin: ', this.refs);
-
-                  if (botsList.moveBot) {
-                    const origin = this.refs.origin.value.trim();
-                    const destination = this.refs.destination.value.trim();
-                    addBot('moving', null, origin, destination);
-                    this.refs.destination.value = '';
-                    this.refs.origin.value = '';
-                  } else {
-                    const postCenter = this.refs.postCenter.value.trim();
-                    addBot('posting', postCenter);
-                    this.refs.postCenter.value = '';
-                  }
-                }
-                }
+            {botsList.moveBot || botsList.postBot ?
+              <div
+                className="col s2"
+                style={{
+                  textAlign: 'center',
+                  marginTop: '3%',
+                }}
               >
-                <i className="material-icons">add</i>
-              </a>
-            </div>
+                <a
+                  className="btn-floating btn-small waves-effect waves-light green"
+                  onClick={() => {
+                    console.log('origin: ', this.refs);
+
+                    if (botsList.moveBot) {
+                      const origin = this.refs.origin.value.trim();
+                      const destination = this.refs.destination.value.trim();
+                      addBot('moving', null, origin, destination);
+                      this.refs.destination.value = '';
+                      this.refs.origin.value = '';
+                    } else {
+                      const postCenter = this.refs.postCenter.value.trim();
+                      addBot('posting', postCenter);
+                      this.refs.postCenter.value = '';
+                    }
+                  }
+                  }
+                >
+                  <i className="material-icons">add</i>
+                </a>
+              </div> : null
+            }
             {botsList.moveBot ?
               <div className="row">
                 <form className="col s10">

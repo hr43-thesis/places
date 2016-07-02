@@ -117,8 +117,7 @@ export function startMoving(userId) {
       method: 'POST',
       data: {
         userId,
-        origin: '1326 stockton street sf',
-        destination: 'hack reactor sf',
+        interval: 10000,
       },
       withCredentials: true,
     };
