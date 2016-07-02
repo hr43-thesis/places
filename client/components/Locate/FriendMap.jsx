@@ -123,7 +123,8 @@ class FriendMap extends Component {
                 ];
                 const ref = `marker_${index}`;
                 // do some logic around updatedAt
-                return (
+                const lineRender = new Date().getTime()
+                  - new Date(marker.updatedAt).getTime() < 60000 ?
                   <Polyline
                     path={path}
                     key={index}
@@ -133,8 +134,8 @@ class FriendMap extends Component {
                       strokeOpacity: 1.0,
                       strokeWeight: 2,
                     }}
-                  />
-                );
+                  /> : null;
+                return lineRender;
               })}
             </GoogleMap>
          }
