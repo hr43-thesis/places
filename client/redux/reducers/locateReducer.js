@@ -9,8 +9,14 @@ export default function displayPlacesReducer(state = initialState.locate, action
       ));
     }
 
+    case 'UPDATE_FOLLOWS_LOCATION': {
+      const copyLocate = [...state];
+      return copyLocate.map((user) => (
+        Object.assign({}, user, action.data[user.id])
+      ));
+    }
+
     case 'FILTER_LOCATE': {
-      // action.follows, action.filter
       const filterItem = action.filter;
       const follows = action.follows;
       let result = follows.filter(place => typeof place.id === 'number' || filterItem);

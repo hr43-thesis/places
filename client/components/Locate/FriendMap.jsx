@@ -13,75 +13,28 @@ class FriendMap extends Component {
         lat: 37.7835896,
         lng: -122.4092149,
       },
+      zoom: 12,
     };
-    //   testData: [
-    //     {
-    //       id: 0,
-    //       name: 'Stone Cold Steve Austin',
-    //       currLat: 37.765061,
-    //       currLng: -122.477020,
-    //       prevLat: 37.764230,
-    //       prevLng: -122.457140,
-    //       repCount: 20,
-    //       updatedAt: new Date(),
-    //       showInfo: false,
-    //       imageUrl: 'http://www.reviewstl.com/wp-content/uploads/2013/03/Stone-Cold-Steve-Austin-Beer.jpg',
-    //     },
-    //     {
-    //       id: 1,
-    //       name: 'Barak Obama',
-    //       currLat: 37.760661,
-    //       currLng: -122.423020,
-    //       prevLat: 37.760730,
-    //       prevLng: -122.422140,
-    //       repCount: 10,
-    //       updatedAt: new Date(),
-    //       showInfo: false,
-    //       imageUrl: 'http://www.gannett-cdn.com/media/USATODAY/GenericImages/2012/09/21/c03_obama_06-x-wide-community.jpg',
-    //     },
-    //     {
-    //       id: 2,
-    //       name: 'Elf',
-    //       currLat: 37.760061,
-    //       currLng: -122.427020,
-    //       prevLat: 37.760230,
-    //       prevLng: -122.427140,
-    //       repCount: 50,
-    //       updatedAt: new Date('2016/06/29 16:50:02'),
-    //       showInfo: false,
-    //       imageUrl: 'http://4.bp.blogspot.com/-IHsHRia-_bU/TiZGlQQBItI/AAAAAAAAALQ/U2B_37hZio8/s1600/Buddy+the+Elf.png',
-    //     },
-    //   ],
-    // };
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleViewChanged = this.handleViewChanged.bind(this);
-    // this.intervals = [];
-    // this.intervals.push(setInterval(this.moveMarkers.bind(this), 3000));
   }
 
   componentWillMount() {
-    // update display places to be all user's places initially
-    // me is place holder
-    // this.props.updateDisplayPlaces(this.props.places, 'me');
   }
 
+  componentDidMount() {
+  }
+
+  componentWillReceiveProps() {
+    // this.setState({ center: nextProps.center });
+    // if (this.googleMapComponent) {
+    //   this.googleMapComponent.props.map.setZoom(nextProps.zoom);
+    // }
+  }
   componentWillUnmount() {
+    this.props.hideAll();
     // this.intervals.forEach(clearInterval);
   }
-
-  // moveMarkers() {
-  //   let movedData = [...this.state.testData];
-  //   movedData = movedData.map(user => {
-  //     const newUser = Object.assign({}, user, {
-  //       prevLng: user.currLng,
-  //       prevLat: user.currLat,
-  //       currLat: (user.currLat + Math.random() / 100),
-  //       currLng: (user.currLng + Math.random() / 100),
-  //     });
-  //     return newUser;
-  //   });
-  //   this.setState({ testData: movedData });
-  // }
 
   handleViewChanged() {
     this.setState({
@@ -101,14 +54,13 @@ class FriendMap extends Component {
     } else {
       this.props.hideAll();
       this.props.updateShowing(index);
+      // this.setState({ center: { lat: +marker.currLat, lng: +marker.currLng } });
+      // this.googleMapComponent.props.map.setZoom(14);
     }
-    // this.props.updateShowing(index);
-    // const newData = [...this.state.testData];
-    // newData[index].showInfo = !newData[index].showInfo;
-    // this.setState({ testData: newData });
   }
 
   renderInfoWindow(ref, marker, index) {
+    const imgStyle = { height: '100px' };
     return (
       <InfoWindow
         key={`${ref}_info_window`}
@@ -116,7 +68,7 @@ class FriendMap extends Component {
       >
         <div>
           <h4>{marker.name}</h4>
-          <img alt={ref} src={marker.imageUrl} />
+          <img alt={ref} style={imgStyle} src={marker.imageUrl} />
         </div>
       </InfoWindow>
     );
@@ -137,14 +89,16 @@ class FriendMap extends Component {
           }
           googleMapElement={
             <GoogleMap
-              ref={(map) => (this.googleMapComponent = map)}
-              defaultZoom={13}
+              ref={(map) => {
+                window.gm = map;
+                this.googleMapComponent = map;
+              }}
+              defaultZoom={this.state.zoom}
               center={this.state.center}
               onClick={this.handleMapClick}
               onBoundsChanged={this.handleViewChanged}
             >
               {this.props.displayUsers.map((marker, index) => {
-                console.log('marker has props: ', marker);
                 const ref = `marker_${index}`;
                 // do some logic around whether to show marker?
                 const renderMarker = (
@@ -202,8 +156,11 @@ class FriendMap extends Component {
 
 FriendMap.propTypes = {
   displayUsers: React.PropTypes.array,
+  center: React.PropTypes.object,
+  zoom: React.PropTypes.number,
   hideAll: React.PropTypes.func,
   updateShowing: React.PropTypes.func,
+  // updateCenter: React.PropTypes.func,
 };
 
 export default FriendMap;
@@ -242,4 +199,56 @@ export default FriendMap;
 //     defaultAnimation: 2,
 //   },
 // ];
+//   testData: [
+    //     {
+    //       id: 0,
+    //       name: 'Stone Cold Steve Austin',
+    //       currLat: 37.765061,
+    //       currLng: -122.477020,
+    //       prevLat: 37.764230,
+    //       prevLng: -122.457140,
+    //       repCount: 20,
+    //       updatedAt: new Date(),
+    //       showInfo: false,
+    //       imageUrl: 'http://www.reviewstl.com/wp-content/uploads/2013/03/Stone-Cold-Steve-Austin-Beer.jpg',
+    //     },
+    //     {
+    //       id: 1,
+    //       name: 'Barak Obama',
+    //       currLat: 37.760661,
+    //       currLng: -122.423020,
+    //       prevLat: 37.760730,
+    //       prevLng: -122.422140,
+    //       repCount: 10,
+    //       updatedAt: new Date(),
+    //       showInfo: false,
+    //       imageUrl: 'http://www.gannett-cdn.com/media/USATODAY/GenericImages/2012/09/21/c03_obama_06-x-wide-community.jpg',
+    //     },
+    //     {
+    //       id: 2,
+    //       name: 'Elf',
+    //       currLat: 37.760061,
+    //       currLng: -122.427020,
+    //       prevLat: 37.760230,
+    //       prevLng: -122.427140,
+    //       repCount: 50,
+    //       updatedAt: new Date('2016/06/29 16:50:02'),
+    //       showInfo: false,
+    //       imageUrl: 'http://4.bp.blogspot.com/-IHsHRia-_bU/TiZGlQQBItI/AAAAAAAAALQ/U2B_37hZio8/s1600/Buddy+the+Elf.png',
+    //     },
+    //   ],
+    // };
+      // moveMarkers() {
+  //   let movedData = [...this.state.testData];
+  //   movedData = movedData.map(user => {
+  //     const newUser = Object.assign({}, user, {
+  //       prevLng: user.currLng,
+  //       prevLat: user.currLat,
+  //       currLat: (user.currLat + Math.random() / 100),
+  //       currLng: (user.currLng + Math.random() / 100),
+  //     });
+  //     return newUser;
+  //   });
+  //   this.setState({ testData: movedData });
+  // }
 

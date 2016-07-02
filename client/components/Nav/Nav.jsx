@@ -28,6 +28,9 @@ class Nav extends React.Component {
               </li>
               <li><Link to="/follow"><i className="material-icons left">search</i>Search</Link></li>
               <li>
+                <Link to="/locate"><i className="material-icons left">my_location</i>Locate</Link>
+              </li>
+              <li>
                 <Link to="/welcome" onClick={() => { this.props.handleLogout(); }}>
                   <i className="material-icons left">input</i>Logout
                 </Link>

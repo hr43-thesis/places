@@ -9,7 +9,6 @@ export default function followsReducer(state = initialState.follows, action) {
       return action.follows;
 
     case 'UPDATE_FOLLOWS_LOCATION': {
-      console.log('inside update follows!!!---------');
       return state.map(follow => (
         Object.assign({}, follow, action.data[follow.id])
       ));

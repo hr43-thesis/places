@@ -31,9 +31,7 @@ export function getLocationInfo(follows) {
       basicFollows,
     })
     .then((response) => {
-      console.log('Response in get req for followloc...', response.data);
       if (response.status === 200) {
-        console.log('DISPATCHING');
         return dispatch({
           type: 'UPDATE_FOLLOWS_LOCATION',
           data: response.data,
