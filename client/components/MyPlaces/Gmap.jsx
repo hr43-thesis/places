@@ -41,7 +41,12 @@ class Gmap extends Component {
   }
 
   handleMarkerClick(marker, index) {
-    this.props.updateShowing(index);
+    if (marker.showInfo) {
+      this.props.hideAll();
+    } else {
+      this.props.hideAll();
+      this.props.updateShowing(index);
+    }
   }
 
   renderInfoWindow(ref, marker, index) {

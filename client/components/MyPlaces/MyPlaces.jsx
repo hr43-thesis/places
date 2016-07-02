@@ -23,8 +23,13 @@ class MyPlaces extends React.Component {
       filter, this.props.favs);
   }
 
-  handleListClick(index) {
-    this.props.updateShowing(index);
+  handleListClick(place, index) {
+    if (place.showInfo) {
+      this.props.hideAll();
+    } else {
+      this.props.hideAll();
+      this.props.updateShowing(index);
+    }
   }
 
   render() {
@@ -43,7 +48,7 @@ class MyPlaces extends React.Component {
               List will go here
               <ul>
                 {this.props.displayPlaces.map((place, index) => (
-                  <li onClick={() => this.handleListClick(index)}>
+                  <li onClick={() => this.handleListClick(place, index)}>
                     {place.name}
                   </li>
                 ))}

@@ -18,9 +18,9 @@ class Locate extends React.Component {
     this.props.loadLocate.bind(this);
     this.intervals = [];
     this.intervals.push(setInterval(() => {
-      // console.log('inside setInterval, this is: ', this);
+      console.log('inside setInterval, this is: ', this);
       this.props.getLocationInfo(this.props.follows);
-    }, 10000));
+    }, 5000));
   }
 
   componentWillMount() {
@@ -52,23 +52,10 @@ class Locate extends React.Component {
     }
   }
 
-  testButton() {
-    this.props.getLocationInfo(this.props.follows);
-  }
-
-  buildLocate() {
-    console.log('buildLocate clikced!');
-    console.log(this.props.follows);
-    console.log('typeof loadLocate', typeof this.props.loadLocate);
-    this.props.loadLocate(this.props.follows);
-  }
-
   render() {
     return (
       <div>
         <h1>Locate Friends</h1>
-        <button onClick={() => this.testButton()}>Update locations</button>
-        <button onClick={() => this.buildLocate()}>Load actual location</button>
         <div className="row">
           <div className="col s4">
             Followed Friends
@@ -76,8 +63,14 @@ class Locate extends React.Component {
             <div className="section">
               <ul>
                 {this.props.locate.map((user, index) => (
-                  <li onClick={() => this.handleListClick(index, user)}>
-                    {user.name}<br /><img alt="loading" style={imgStyle} src={user.imageUrl} />
+                  <li>
+                    {user.name}<br />
+                    <img
+                      onClick={() => this.handleListClick(index, user)}
+                      alt="loading"
+                      style={imgStyle}
+                      src={user.imageUrl}
+                    />
                   </li>
                 ))}
               </ul>
