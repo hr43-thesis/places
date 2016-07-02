@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Bots from './Bots.jsx';
 import * as Actions from '../../redux/actions/botsActions';
-
+import { toggleBotSelect } from '../../redux/actions/botsListActions';
 
 class BotsContainer extends React.Component {
   // constructor() {
@@ -47,7 +47,7 @@ class BotsContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
   bots: state.bots,
-
+  botsList: state.botsList,
 });
 
 function mapDispatchToProps(dispatch) {
@@ -57,6 +57,7 @@ function mapDispatchToProps(dispatch) {
     addBot: bindActionCreators(Actions.addBot, dispatch),
     startMoving: bindActionCreators(Actions.startMoving, dispatch),
     stopMoving: bindActionCreators(Actions.stopMoving, dispatch),
+    toggleBotSelect: bindActionCreators(toggleBotSelect, dispatch),
   };
 }
 
@@ -66,6 +67,7 @@ BotsContainer.propTypes = {
   addBot: React.PropTypes.func,
   startMoving: React.PropTypes.func,
   stopMoving: React.PropTypes.func,
+  toggleBotSelect: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BotsContainer);

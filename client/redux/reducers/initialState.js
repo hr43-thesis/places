@@ -12,4 +12,8 @@ export default {
   displayUsers: [],
   locate: [],
   bots: [],
+  botsList: {
+    postBot: false,
+    moveBot: false,
+  },
 };
