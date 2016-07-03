@@ -99,9 +99,10 @@ class FriendMap extends Component {
               onBoundsChanged={this.handleViewChanged}
             >
               {this.props.displayUsers.map((marker, index) => {
+                const time = new Date(marker.updatedAt).getTime();
                 const ref = `marker_${index}`;
                 // do some logic around whether to show marker?
-                const renderMarker = (
+                const renderMarker = (new Date().getTime() - time < 4 * Math.pow(10, 7) ?
                   <Marker
                     position={{
                       lat: +marker.currLat,
@@ -112,7 +113,7 @@ class FriendMap extends Component {
                     onClick={(event) => this.handleMarkerClick(marker, index, event)}
                   >
                     {marker.showInfo ? this.renderInfoWindow(ref, marker, index) : null}
-                  </Marker>
+                  </Marker> : null
                 );
                 return renderMarker;
               })}
