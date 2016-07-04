@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
-console.log('dirname is: ', __dirname);
 
 class Gmap extends Component {
   constructor(props) {
@@ -117,38 +116,4 @@ Gmap.propTypes = {
 };
 
 export default Gmap;
-
-//   {
-//     position: {
-//       lat: 37.7761391,
-//       lng: -122.3897686,
-//     },
-//     key: 'The Yard',
-//     defaultAnimation: 2,
-//   },
-//   {
-//     position: {
-//       lat: 37.7903982,
-//       lng: -122.4616293,
-//     },
-//     key: 'Presidio Golf Course',
-//     defaultAnimation: 2,
-//   },
-//   {
-//     position: {
-//       lat: 37.7757447,
-//       lng: -122.4088245,
-//     },
-//     key: 'Raven Night Club',
-//     defaultAnimation: 2,
-//   },
-//   {
-//     position: {
-//       lat: 37.7753907,
-//       lng: -122.3966198,
-//     },
-//     key: 'Home',
-//     defaultAnimation: 2,
-//   },
-// ];
 

@@ -18,18 +18,14 @@ class Locate extends React.Component {
     this.props.loadLocate.bind(this);
     this.intervals = [];
     this.intervals.push(setInterval(() => {
-      console.log('inside setInterval, this is: ', this);
       this.props.getLocationInfo(this.props.follows);
     }, 5000));
   }
 
   componentWillMount() {
-    // update the follows with location here
+    // update the follows list with location info
     this.props.getLocationInfo(this.props.follows);
     setTimeout(() => this.props.loadLocate(this.props.follows), 1000);
-    // const self = this;
-    // self.props.getLocationInfo(self.props.follows);
-    // setTimeout(self.props.loadLocate(self.props.follows), 1500);
   }
 
   componentWillUnmount() {
@@ -63,7 +59,7 @@ class Locate extends React.Component {
             <div className="section">
               <ul>
                 {this.props.locate.map((user, index) => (
-                  <li>
+                  <li key={index}>
                     {user.name}<br />
                     <img
                       onClick={() => this.handleListClick(index, user)}
