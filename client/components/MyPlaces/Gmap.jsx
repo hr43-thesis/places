@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
+console.log('dirname is: ', __dirname);
+
 class Gmap extends Component {
   constructor(props) {
     super(props);
@@ -10,22 +12,14 @@ class Gmap extends Component {
         lat: 37.7835896,
         lng: -122.4092149,
       },
-      mounting: true,
     };
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleViewChanged = this.handleViewChanged.bind(this);
   }
-  componentWillMount() {
-    // update display places to be all user's places initially
-    // me is place holder
-    // this.props.updateDisplayPlaces(this.props.places, 'me');
-    // console.log('Map is about to mount---------');
-  }
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      mounting: nextProps,
-    });
-    // console.log('inside comp willrecieve, props are:', nextProps);
+
+  componentWillReceiveProps() {
+    // if (nextProps.displayPlaces[0]) {
+    //   const filter = nextProps.displayPlaces[0].userId === this.props.User
   }
 
   handleViewChanged() {
@@ -89,13 +83,13 @@ class Gmap extends Component {
                 const ref = `marker_${index}`;
                 const renderMarker = (
                   <Marker
-                    {...marker}
                     position={{
                       lat: +marker.lat,
                       lng: +marker.lng,
                     }}
                     key={index}
                     defaultAnimation={2}
+                    icon={this.props.filterType === 'Starred' ? 'https://cdn0.iconfinder.com/data/icons/stuttgart/32/star.png' : null}
                     ref={ref}
                     onClick={(event) => this.handleMarkerClick(marker, index, event)}
                   >
@@ -119,7 +113,7 @@ Gmap.propTypes = {
   updateDisplayPlaces: React.PropTypes.func,
   updateShowing: React.PropTypes.func,
   hideAll: React.PropTypes.func,
-  fitlerType: React.PropTypes.string,
+  filterType: React.PropTypes.string,
 };
 
 export default Gmap;

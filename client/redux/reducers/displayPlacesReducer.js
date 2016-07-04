@@ -27,7 +27,7 @@ export default function displayPlacesReducer(state = initialState.displayPlaces,
         result = places.filter(place => action.favs.indexOf(place.userPlaceId) !== -1);
         result = result.map(place => Object.assign({}, place, { showInfo: false }));
       }
-      return result || state;
+      return result;
     }
 
     case 'UPDATE_SHOWING': {

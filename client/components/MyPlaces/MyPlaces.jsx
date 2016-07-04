@@ -8,7 +8,7 @@ class MyPlaces extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: 'style',
+      filterBy: 'Pinned',
     };
   }
   componentWillMount() {
@@ -19,6 +19,7 @@ class MyPlaces extends React.Component {
     // place holder
     const filter = e.target.firstChild.nodeValue;
     // this.setState({ filterType: e.target.firstChild.nodeValue });
+    this.setState({ filterBy: filter });
     this.props.updateDisplayPlaces(this.props.places, this.props.userId,
       filter, this.props.favs);
   }
@@ -60,6 +61,7 @@ class MyPlaces extends React.Component {
               displayPlaces={this.props.displayPlaces}
               hideAll={this.props.hideAll}
               updateShowing={this.props.updateShowing}
+              filterType={this.state.filterBy}
             />
           </div>
         </div>
