@@ -12,7 +12,7 @@ export default function displayPlacesReducer(state = initialState.displayPlaces,
     }
 
     case 'FILTER_PLACES': {
-      // myplaces - places ave userId and userPlacesId
+      // myplaces - places are userId and userPlacesId
       const filterItem = action.filter;
       const places = action.places;
       const userId = action.userId;

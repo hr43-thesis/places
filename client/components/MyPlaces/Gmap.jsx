@@ -66,19 +66,6 @@ class Gmap extends Component {
 
 
   render() {
-    // const formattedLocations = this.props.displayPlaces.map((place, index) => (
-    //   // return the formatted object
-    //   {
-    //     position: {
-    //       lat: +place.lat,
-    //       lng: +place.lng,
-    //     },
-    //     key: index,
-    //     defaultAnimation: 2,
-    //     showInfo: place.showInfo,
-    //   }
-    // ));
-
     return (
       <section style={{ height: '800px' }}>
         <GoogleMapLoader
