@@ -1,6 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
-const env = require('./env/clientDev');
+let env;
+
+// Load environment variables
+if (process.env.NODE_ENV === 'development') {
+  env = require('./env/clientDev');
+} else {
+  env = require('./env/clientProd');
+}
 
 module.exports = {
   devtool: 'inline-sourcemap',

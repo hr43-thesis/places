@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "NODE_ENV=development nodemon server/devServer.js --ignore components",
+    "prod": "NODE_ENV=production nodemon server/devServer.js --ignore components",
     "test": "mocha --reporter spec"
   },
   "repository": {
