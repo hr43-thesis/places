@@ -99,7 +99,7 @@ class FriendMap extends Component {
               onBoundsChanged={this.handleViewChanged}
             >
               {this.props.displayUsers.map((marker, index) => {
-                const time = new Date(marker.updatedAt).getTime();
+                const time = new Date(marker.locUpdatedAt).getTime();
                 const ref = `marker_${index}`;
                 // do some logic around whether to show marker?
                 const renderMarker = (new Date().getTime() - time < 4 * Math.pow(10, 7) ?
@@ -125,7 +125,7 @@ class FriendMap extends Component {
                 const ref = `marker_${index}`;
                 // do some logic around updatedAt
                 const lineRender = new Date().getTime()
-                  - new Date(marker.updatedAt).getTime() < 60000 ?
+                  - new Date(marker.locUpdatedAt).getTime() < 60000 ?
                   <Polyline
                     path={path}
                     key={index}
