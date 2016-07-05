@@ -60,14 +60,17 @@ class FriendMap extends Component {
   }
 
   renderInfoWindow(ref, marker, index) {
-    const imgStyle = { height: '100px' };
+    const imgStyle = { height: '60px' };
     return (
       <InfoWindow
         key={`${ref}_info_window`}
         onCloseclick={(e) => this.handleMarkerClick(marker, index, e)}
+        options={{
+          maxWidth: 100,
+        }}
       >
         <div>
-          <h4>{marker.name}</h4>
+          <h5>{marker.name}</h5>
           <img alt={ref} style={imgStyle} src={marker.imageUrl} />
         </div>
       </InfoWindow>

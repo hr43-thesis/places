@@ -46,6 +46,9 @@ class Gmap extends Component {
     return (
       <InfoWindow
         key={`${ref}_info_window`}
+        options={{
+          maxWidth: 300,
+        }}
         onCloseclick={(e) => this.handleMarkerClick(marker, index, e)}
       >
         <div>

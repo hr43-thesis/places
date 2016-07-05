@@ -3,6 +3,7 @@ import Gmap from './Gmap.jsx';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionsCreators from '../../redux/actions/displayPlacesActions';
+import PlaceList from './PlaceListContainer.jsx';
 
 class MyPlaces extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class MyPlaces extends React.Component {
     this.state = {
       filterBy: 'Pinned',
     };
+    this.handleListClick = this.handleListClick.bind(this);
   }
   componentWillMount() {
     this.props.updateDisplayPlaces(this.props.places, this.props.userId, 'Pinned');
@@ -24,7 +26,7 @@ class MyPlaces extends React.Component {
       filter, this.props.favs);
   }
 
-  handleListClick(place, index) {
+  handleListClick(index, place) {
     if (place.showInfo) {
       this.props.hideAll();
     } else {
@@ -40,20 +42,15 @@ class MyPlaces extends React.Component {
         <div className="row">
           <div className="col s4">
             <div className="section">
-              Filter will go here
               <button onClick={(e) => { this.handleFilterType(e); }}>Starred</button>
               <button onClick={(e) => { this.handleFilterType(e); }}>Pinned</button>
             </div>
             <div className="divider" />
             <div className="section">
-              List will go here
-              <ul>
-                {this.props.displayPlaces.map((place, index) => (
-                  <li onClick={() => this.handleListClick(place, index)}>
-                    {place.name}
-                  </li>
-                ))}
-              </ul>
+              <PlaceList
+                onListClick={this.handleListClick}
+                places={this.props.displayPlaces}
+              />
             </div>
           </div>
           <div className="col s8">

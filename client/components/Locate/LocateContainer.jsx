@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 import * as followActions from '../../redux/actions/followActions';
 import * as locateActions from '../../redux/actions/locateActions';
 import FriendMap from './FriendMap.jsx';
+import FriendList from './FriendListContainer.jsx';
 
-const imgStyle = { height: '100px' };
 
 class Locate extends React.Component {
   constructor(props) {
@@ -14,6 +14,8 @@ class Locate extends React.Component {
       style: 'style',
       filterType: '',
     };
+    this.handleListClick = this.handleListClick.bind(this);
+
     this.props.getLocationInfo.bind(this);
     this.props.loadLocate.bind(this);
     this.intervals = [];
@@ -57,19 +59,10 @@ class Locate extends React.Component {
             Followed Friends
             <div className="divider" />
             <div className="section">
-              <ul>
-                {this.props.locate.map((user, index) => (
-                  <li key={index}>
-                    {user.name}<br />
-                    <img
-                      onClick={() => this.handleListClick(index, user)}
-                      alt="loading"
-                      style={imgStyle}
-                      src={user.imageUrl}
-                    />
-                  </li>
-                ))}
-              </ul>
+              <FriendList
+                onListClick={this.handleListClick}
+                locate={this.props.locate}
+              />
             </div>
           </div>
           <div className="col s8">
