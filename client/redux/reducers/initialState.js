@@ -16,4 +16,5 @@ export default {
     postBot: false,
     moveBot: false,
   },
+  recs: [],
 };
