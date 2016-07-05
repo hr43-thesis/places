@@ -5,16 +5,22 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="styles.css">
   <meta charset="UTF-8">
   <title></title>
   <script src="auth/keys.js"></script>
   <script type="text/javascript">
     /* eslint-disable */
-    var apiSrc = 'https://maps.googleapis.com/maps/api/js?key=' + window.GMAP_SECRET;
+    // var apiSrc = 'https://maps.googleapis.com/maps/api/js?key=' + window.GMAP_SECRET + "&libraries=places";
+
+    var apiSrc = "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=" + window.GMAP_SECRET
+
     console.log('apiSrc is: ', apiSrc);
     document.write('<script type="text/javascript" src="' + apiSrc + '"></scr' + 'ipt>');
     /* eslint-disable */
   </script>
+<!--   <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBG0SybP0EKWH3Jvwki7IR5AMyO_cUeeQc"></script> -->
+
 </head>
 <body class="blue-grey lighten-5">
   <div id="app"></div>

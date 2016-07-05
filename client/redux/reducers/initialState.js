@@ -15,6 +15,9 @@ export default {
   botsList: {
     postBot: false,
     moveBot: false,
+    postCenter: '',
+    origin: '',
+    destination: '',
   },
   recs: [],
 };
