@@ -6,7 +6,7 @@ import { displayRecs } from '../../../redux/actions/recsActions';
 
 class RecContainer extends Component {
   componentDidMount() {
-    api.getRecommendations(1)
+    api.getRecommendations(this.props.userId)
     .then(res => {
       const recs = res.data;
       this.props.displayRecs(recs);
