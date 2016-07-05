@@ -38,6 +38,7 @@ module.exports = {
         RECS_PROTOCOL: JSON.stringify(env.RECS_PROTOCOL),
         RECS_HOST: JSON.stringify(env.RECS_HOST),
         RECS_PORT: JSON.stringify(env.RECS_PORT),
+        NODE_ENV: JSON.stringify(env.NODE_ENV),
       },
     }),
   ],
