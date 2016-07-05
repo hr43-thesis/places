@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 const serverUrl = `${process.env.PROTOCOL}${process.env.HOST}:${process.env.PORT}`;
+const recServerUrl =
+  `${process.env.RECS_PROTOCOL}${process.env.RECS_HOST}:${process.env.RECS_PORT}`;
 
 const api = {
   followUser(userId, followedId, followed) {
@@ -52,11 +54,10 @@ const api = {
     });
   },
   getRecommendations(userId) {
-    console.log('user id', userId);
     return axios({
       url: `/api/recommendations/user/${userId}/places`,
       method: 'get',
-      baseURL: serverUrl,
+      baseURL: recServerUrl,
       withCredentials: true,
     });
   },

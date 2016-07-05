@@ -12,6 +12,7 @@ import locate from './locateReducer';
 import isAdmin from './adminReducer';
 import bots from './botsReducer';
 import botsList from './botsListReducer';
+import recs from './recsReducer';
 
 const rootReducer = combineReducers({
   places,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   locate,
   bots,
   botsList,
+  recs,
   routing: routerReducer,
 });
 
