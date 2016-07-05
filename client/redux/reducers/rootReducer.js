@@ -8,6 +8,7 @@ import follows from './followsReducer';
 import favs from './favsReducer';
 import displayPlaces from './displayPlacesReducer';
 import displayUsers from './displayUsersReducer';
+import locate from './locateReducer';
 
 const rootReducer = combineReducers({
   places,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   auth,
   users,
   displayUsers,
+  locate,
   routing: routerReducer,
 });
 

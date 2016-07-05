@@ -1,3 +1,7 @@
+import axios from 'axios';
+
+const serverUrl = `${process.env.PROTOCOL}${process.env.HOST}:${process.env.PORT}`;
+
 export const searchUser = (user) => ({
   type: 'SEARCH_USER',
   user,
@@ -17,3 +21,24 @@ export const getFollowPlaces = (places) => ({
   type: 'GET_FOLLOW_PLACES',
   places,
 });
+
+export function getLocationInfo(follows) {
+  // might need to modify follows
+  const basicFollows = follows.map(person => person.id);
+  return (dispatch) => {
+    axios.post(`${serverUrl}/api/locate`, {
+      withCredentials: true,
+      basicFollows,
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        return dispatch({
+          type: 'UPDATE_FOLLOWS_LOCATION',
+          data: response.data,
+        });
+      }
+      return null;
+    });
+  };
+}
+
