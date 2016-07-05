@@ -1,6 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
-const env = require('./env/clientDev');
+let env;
+
+// Load environment variables
+if (process.env.NODE_ENV === 'development') {
+  env = require('./env/clientDev');
+} else {
+  env = require('./env/clientProd');
+}
 
 module.exports = {
   devtool: 'inline-sourcemap',
@@ -26,6 +33,8 @@ module.exports = {
         PROTOCOL: JSON.stringify(env.PROTOCOL),
         HOST: JSON.stringify(env.HOST),
         PORT: JSON.stringify(env.PORT),
+        BOT_SERVICE: JSON.stringify(env.BOT_SERVICE),
+        BOT_PORT: JSON.stringify(env.BOT_PORT),
       },
     }),
   ],

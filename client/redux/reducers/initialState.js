@@ -7,7 +7,13 @@ export default {
   follows: [],
   favs: [],
   isAuth: false,
+  isAdmin: true,
   users: [],
   displayUsers: [],
   locate: [],
+  bots: [],
+  botsList: {
+    postBot: false,
+    moveBot: false,
+  },
 };

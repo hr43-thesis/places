@@ -8,6 +8,7 @@ import { loadDisplayPlaces } from '../redux/actions/displayPlacesActions';
 import { fetchUsers } from '../redux/actions/usersActions';
 import { getFollows } from '../redux/actions/followActions';
 import { loadFavs } from '../redux/actions/favsActions';
+import { getBots } from '../redux/actions/botsActions';
 
 class AppContainer extends Component {
 
@@ -33,6 +34,7 @@ class AppContainer extends Component {
     });
     this.props.fetchUsers();
     this.props.loadFavs(this.props.userId);
+    this.props.getBots();
   }
 
   render() {
@@ -57,6 +59,7 @@ const mapDispatchToProps = function mapDispatchToProps(dispatch) {
     fetchUsers: bindActionCreators(fetchUsers, dispatch),
     getFollows: bindActionCreators(getFollows, dispatch),
     loadFavs: bindActionCreators(loadFavs, dispatch),
+    getBots: bindActionCreators(getBots, dispatch),
   };
 };
 
@@ -67,6 +70,7 @@ AppContainer.propTypes = {
   fetchUsers: React.PropTypes.func,
   getFollows: React.PropTypes.func,
   loadFavs: React.PropTypes.func,
+  getBots: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

@@ -5,7 +5,7 @@ import { push } from 'react-router-redux';
 export default function Auth(Component) {
   class AuthenticatedComponent extends React.Component {
     static propTypes = {
-      auth: PropTypes.bool,
+      isAuth: PropTypes.bool,
       dispatch: PropTypes.func.isRequired,
     };
 
@@ -19,7 +19,7 @@ export default function Auth(Component) {
 
     checkAndRedirect() {
       const { dispatch } = this.props;
-      if (!this.props.auth) {
+      if (!this.props.isAuth) {
         dispatch(push('/welcome'));
       }
     }
@@ -27,14 +27,14 @@ export default function Auth(Component) {
     render() {
       return (
         <div className="authenticated">
-          {this.props.auth ? <Component {...this.props} /> : null}
+          {this.props.isAuth ? <Component {...this.props} /> : null}
         </div>
       );
     }
   }
 
   const mapStateToProps = (state) => ({
-    auth: state.auth,
+    isAuth: state.isAuth,
   });
 
   return connect(mapStateToProps)(AuthenticatedComponent);
