@@ -15,7 +15,6 @@ class AppContainer extends Component {
   componentWillMount() {
     api.getPlaces(this.props.userId)
       .then((places) => {
-        console.log('Places from req resp--->', places.data);
         this.props.loadPlaces(places.data);
         this.props.loadDisplayPlaces(places.data, this.props.userId);
       })

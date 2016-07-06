@@ -6,7 +6,6 @@ export function loadFavs(userId) {
   return (dispatch) => {
     axios.get(`${serverUrl}/api/users/${userId}/favs`, { withCredentials: true })
     .then((response) => {
-      console.log('Response in get req for Favs...', response);
       if (response.status === 200) {
         return dispatch({
           type: 'LOAD_FAVS',
@@ -26,7 +25,6 @@ export function addFav(userId, placeId, userPlaceId) {
       userPlaceId,
     })
     .then((response) => {
-      console.log('Response in post req to Favs...', response);
       if (response.status === 201) {
         return dispatch({
           type: 'ADD_FAV',
