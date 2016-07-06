@@ -12,6 +12,11 @@ export const followUser = (user) => ({
   user,
 });
 
+export const unfollowUser = (followedId) => ({
+  type: 'UNFOLLOW_USER',
+  followedId,
+});
+
 export const getFollows = (follows) => ({
   type: 'GET_FOLLOWS',
   follows,
@@ -20,6 +25,11 @@ export const getFollows = (follows) => ({
 export const getFollowPlaces = (places) => ({
   type: 'GET_FOLLOW_PLACES',
   places,
+});
+
+export const removeFollowPlaces = (followedId) => ({
+  type: 'REMOVE_FOLLOW_PLACES',
+  followedId,
 });
 
 export function getLocationInfo(follows) {
