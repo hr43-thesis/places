@@ -1,12 +1,31 @@
 import React from 'react';
 // import SearchBots from './SearchBots.jsx';
 import BotsList from './BotsList.jsx';
+import Geosuggest from 'react-geosuggest';
 
 class Bots extends React.Component {
   componentWillUnmount() {
     this.props.toggleBotSelect({
       moveBot: false,
       postBot: false,
+    });
+  }
+
+  onOriginSelect(origin) {
+    this.props.setOrigin({
+      origin: origin.gmaps.formatted_address,
+    });
+  }
+
+  onDestinationSelect(destination) {
+    this.props.setDestination({
+      destination: destination.gmaps.formatted_address,
+    });
+  }
+
+  onPostSelect(postCenter) {
+    this.props.setPostCenter({
+      postCenter: postCenter.gmaps.formatted_address,
     });
   }
 
@@ -40,7 +59,7 @@ class Bots extends React.Component {
     const { bots, handlePost, addBot, handleMoving, botsList } = this.props;
     return (
       // <div className="container">
-      <div className="row">
+      <div className="container">
         <div className="col s8 push-s2">
           <h1> Bot list </h1>
           <div>
@@ -70,87 +89,65 @@ class Bots extends React.Component {
                 <label htmlFor="move">Moving Bot</label>
               </p>
             </form>
-            {botsList.moveBot || botsList.postBot ?
-              <div
-                className="col s2"
-                style={{
-                  textAlign: 'center',
-                  marginTop: '3%',
-                }}
-              >
-                <a
-                  className="btn-floating btn-small waves-effect waves-light green"
-                  onClick={() => {
-                    console.log('origin: ', this.refs);
-
-                    if (botsList.moveBot) {
-                      const origin = this.refs.origin.value.trim();
-                      const destination = this.refs.destination.value.trim();
-                      addBot('moving', null, origin, destination);
-                      this.refs.destination.value = '';
-                      this.refs.origin.value = '';
-                    } else {
-                      const postCenter = this.refs.postCenter.value.trim();
-                      addBot('posting', postCenter);
-                      this.refs.postCenter.value = '';
-                    }
-                  }
-                  }
+            <div className="row">
+              {botsList.moveBot || botsList.postBot ?
+                <div
+                  className="col s2"
+                  style={{
+                    textAlign: 'center',
+                    marginTop: '3%',
+                  }}
                 >
-                  <i className="material-icons">add</i>
-                </a>
-              </div> : null
-            }
-            {botsList.moveBot ?
-              <div className="row">
-                <form className="col s10">
-                  <div className="row">
-                    <div className="input-field col s5">
-                      <i className="material-icons prefix">location_on</i>
-                      <input ref="origin" id="icon_prefix" type="text" className="validate" />
-                      <label htmlFor="icon_prefix">Origin</label>
-                    </div>
-                    <div className="input-field col s5">
-                      <i className="material-icons prefix">location_on</i>
-                      <input
-                        ref="destination"
-                        id="icon_telephone"
-                        type="tel"
-                        className="validate"
-                      />
-                      <label htmlFor="icon_telephone">Destination</label>
-                    </div>
-                  </div>
-                </form>
-              </div> : null
-            }
-            {botsList.postBot ?
-              <div className="row">
-                <form className="col s10">
-                  <div className="row">
-                    <div className="input-field col s5">
-                      <i className="material-icons prefix">person_pin</i>
-                      <input ref="postCenter" id="icon_prefix" type="text" className="validate" />
-                      <label htmlFor="icon_prefix">Post Location</label>
-                    </div>
-                  </div>
-                </form>
-              </div> : null
-            }
+                  <a
+                    className="btn-floating btn-small waves-effect waves-light green"
+                    onClick={() => {
+                      if (botsList.moveBot) {
+                        addBot('moving', null, botsList.origin, botsList.destination);
+                      } else {
+                        addBot('posting', botsList.postCenter);
+                      }
+                    }
+                    }
+                  >
+                    <i className="material-icons">add</i>
+                  </a>
+                </div> : null
+              }
+              {botsList.moveBot ?
+                <div>
+                  <Geosuggest
+                    className="col s5"
+                    placeholder="Origin"
+                    onSuggestSelect={(e) => this.onOriginSelect(e)}
+                  />
+                  <Geosuggest
+                    className="col s5"
+                    placeholder="Destination"
+                    onSuggestSelect={(e) => this.onDestinationSelect(e)}
+                  />
+                </div> : null
+              }
+              {botsList.postBot ?
+                <Geosuggest
+                  className="col s7"
+                  placeholder="Origin"
+                  onSuggestSelect={(e) => this.onPostSelect(e)}
+                /> : null
+              }
+            </div>
+            { /* <SearchBots
+              handleSearchUser={handleSearchUser}
+            /> */ }
           </div>
-          { /* <SearchBots
-            handleSearchUser={handleSearchUser}
-          /> */ }
-        </div>
-        <div className="col s8 push-s2">
-          <BotsList
-            bots={bots}
-            handlePost={handlePost}
-            handleMoving={handleMoving}
-          />
+          <div className="col s8 push-s2">
+            <BotsList
+              bots={bots}
+              handlePost={handlePost}
+              handleMoving={handleMoving}
+            />
+          </div>
         </div>
       </div>
-      // </div>
     );
   }
 }
@@ -163,6 +160,9 @@ Bots.propTypes = {
   handleMoving: React.PropTypes.func,
   toggleBotSelect: React.PropTypes.func,
   botsList: React.PropTypes.object,
+  setPostCenter: React.PropTypes.func,
+  setOrigin: React.PropTypes.func,
+  setDestination: React.PropTypes.func,
 };
 
 export default Bots;

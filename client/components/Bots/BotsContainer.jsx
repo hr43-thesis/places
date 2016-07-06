@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Bots from './Bots.jsx';
 import * as Actions from '../../redux/actions/botsActions';
-import { toggleBotSelect } from '../../redux/actions/botsListActions';
+import * as botsList from '../../redux/actions/botsListActions';
 
 class BotsContainer extends React.Component {
   // constructor() {
@@ -16,11 +16,12 @@ class BotsContainer extends React.Component {
     // this.props.combineUsers();
   }
 
-  handlePost(botId, posting) {
+  handlePost(botId, posting, location) {
     if (posting) {
       this.props.stopPosting(botId);
     } else {
-      this.props.startPosting(botId);
+      console.log('location being send is: ', location);
+      this.props.startPosting(botId, location);
     }
   }
 
@@ -37,7 +38,7 @@ class BotsContainer extends React.Component {
       <div>
         <Bots
           {...this.props}
-          handlePost={(botId, posting) => this.handlePost(botId, posting)}
+          handlePost={(botId, posting, location) => this.handlePost(botId, posting, location)}
           handleMoving={(botId, moving) => this.handleMoving(botId, moving)}
         />
       </div>
@@ -57,7 +58,11 @@ function mapDispatchToProps(dispatch) {
     addBot: bindActionCreators(Actions.addBot, dispatch),
     startMoving: bindActionCreators(Actions.startMoving, dispatch),
     stopMoving: bindActionCreators(Actions.stopMoving, dispatch),
-    toggleBotSelect: bindActionCreators(toggleBotSelect, dispatch),
+    toggleBotSelect: bindActionCreators(botsList.toggleBotSelect, dispatch),
+    setPostCenter: bindActionCreators(botsList.setPostCenter, dispatch),
+    setOrigin: bindActionCreators(botsList.setOrigin, dispatch),
+    setDestination: bindActionCreators(botsList.setDestination, dispatch),
+
   };
 }
 

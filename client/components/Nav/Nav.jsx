@@ -58,6 +58,9 @@ class Nav extends React.Component {
                 </Link>
               </li>
               <li><Link to="/follow"><i className="material-icons left">search</i>Search</Link></li>
+              <li>
+                <Link to="/locate"><i className="material-icons left">my_location</i>Locate</Link>
+              </li>
               {this.props.isAdmin ?
                 <li>
                   <Link to="/bots">
