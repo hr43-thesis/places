@@ -11,7 +11,6 @@ class Locate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: 'style',
       filterType: '',
     };
     this.handleListClick = this.handleListClick.bind(this);
@@ -34,11 +33,6 @@ class Locate extends React.Component {
     this.intervals.forEach(clearInterval);
   }
 
-  handleFilterType(e) {
-    // place holder
-    console.log('e: ', e.target.firstChild.nodeValue);
-    console.log('this: ', this);
-  }
 
   handleListClick(index, user) {
     if (user.showInfo) {
@@ -53,10 +47,11 @@ class Locate extends React.Component {
   render() {
     return (
       <div>
-        <h1>Locate Friends</h1>
         <div className="row">
-          <div className="col s4">
-            Followed Friends
+          <div style={{ paddingTop: '20px' }} className="col s3">
+            <span style={{ fontSize: 'medium', fontStyle: 'italic' }}>
+              Friends with recently updated location...
+            </span>
             <div className="divider" />
             <div className="section">
               <FriendList
@@ -65,7 +60,7 @@ class Locate extends React.Component {
               />
             </div>
           </div>
-          <div className="col s8">
+          <div className="col s9">
             {this.props.locate.length > 0 ?
               <FriendMap
                 displayUsers={this.props.locate || []}

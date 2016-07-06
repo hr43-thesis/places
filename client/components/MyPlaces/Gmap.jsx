@@ -63,7 +63,7 @@ class Gmap extends Component {
 
   render() {
     return (
-      <section style={{ height: '800px' }}>
+      <div style={{ position: 'absolute', height: '100%', width: '100%' }}>
         <GoogleMapLoader
           containerElement={
             <div
@@ -104,7 +104,7 @@ class Gmap extends Component {
             </GoogleMap>
          }
         />
-      </section>
+      </div>
     );
   }
 }

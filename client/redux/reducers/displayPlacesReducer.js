@@ -11,6 +11,11 @@ export default function displayPlacesReducer(state = initialState.displayPlaces,
       return displayPlaces;
     }
 
+    case 'CLEAR_DISPLAY': {
+      console.log('clearing');
+      return [];
+    }
+
     case 'FILTER_PLACES': {
       // myplaces - places are userId and userPlacesId
       const filterItem = action.filter;

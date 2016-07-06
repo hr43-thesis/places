@@ -1,5 +1,6 @@
 import React from 'react';
 
+// location_on
 
 const PlaceListEntry = ({ index, place, onListClick }) => (
   <div
@@ -8,11 +9,21 @@ const PlaceListEntry = ({ index, place, onListClick }) => (
       }
   >
     <div className="card-panel grey lighten-5 z-depth-1 hoverable">
-      <div>
-        {place.name}
-      </div>
-      <div>
-        <span style={{ fontStyle: 'italic' }}>"{place.note}"</span> -{place.userName}
+      <div className="row">
+        <div className="col s2">
+          <a style={{ cursor: 'pointer' }}><i
+            className="material-icons"
+            onClick={() => console.log('clicked')}
+          >
+            location_on
+          </i></a>
+        </div>
+        <div className="col s10">
+          {place.name}
+        </div>
+        <div>
+          <span style={{ fontStyle: 'italic' }}>"{place.note}"</span> -{place.userName}
+        </div>
       </div>
     </div>
   </div>

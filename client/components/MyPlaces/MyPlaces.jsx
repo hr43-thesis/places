@@ -13,17 +13,18 @@ class MyPlaces extends React.Component {
     };
     this.handleListClick = this.handleListClick.bind(this);
   }
+
   componentWillMount() {
     this.props.updateDisplayPlaces(this.props.places, this.props.userId, 'Pinned');
   }
 
-  handleFilterType(e) {
-    // place holder
-    const filter = e.target.firstChild.nodeValue;
-    // this.setState({ filterType: e.target.firstChild.nodeValue });
-    this.setState({ filterBy: filter });
-    this.props.updateDisplayPlaces(this.props.places, this.props.userId,
-      filter, this.props.favs);
+  handleFilterType(e, filterItem) {
+    this.props.clearDisplay();
+    setTimeout(() => {
+      this.setState({ filterBy: filterItem });
+      this.props.updateDisplayPlaces(this.props.places, this.props.userId,
+        filterItem, this.props.favs);
+    }, 200);
   }
 
   handleListClick(index, place) {
@@ -38,13 +39,31 @@ class MyPlaces extends React.Component {
   render() {
     return (
       <div>
-        <h1>My Places</h1>
         <div className="row">
-          <div className="col s3">
-            <div className="section">
-              <button onClick={(e) => { this.handleFilterType(e); }}>Starred</button>
-              <button onClick={(e) => { this.handleFilterType(e); }}>Pinned</button>
-            </div>
+          <div style={{ paddingTop: '20px' }} className="col s3">
+            <p>
+              <input
+                className="with-gap"
+                name="placeTypes"
+                type="radio"
+                id="pinned"
+                checked={this.state.filterBy === 'Pinned'}
+                onClick={(e) => this.handleFilterType(e, 'Pinned')}
+              />
+              <label htmlFor="pinned">Pinned</label>
+            </p>
+            <p>
+              <input
+                className="with-gap"
+                name="placeTypes"
+                type="radio"
+                id="starred"
+                checked={this.state.filterBy === 'Starred'}
+                onClick={(e) => this.handleFilterType(e, 'Starred')}
+              />
+              <label htmlFor="starred">Starred</label>
+            </p>
+            <div className="divider" />
             <div className="divider" />
             <div className="section">
               <PlaceList
@@ -75,6 +94,7 @@ MyPlaces.propTypes = {
   updateDisplayPlaces: React.PropTypes.func,
   updateShowing: React.PropTypes.func,
   hideAll: React.PropTypes.func,
+  clearDisplay: React.PropTypes.func,
 };
 
 const mapStateToProps = (state) => (

@@ -17,18 +17,7 @@ class FriendMap extends Component {
     this.handleViewChanged = this.handleViewChanged.bind(this);
   }
 
-  componentWillMount() {
-  }
 
-  componentDidMount() {
-  }
-
-  componentWillReceiveProps() {
-    // this.setState({ center: nextProps.center });
-    // if (this.googleMapComponent) {
-    //   this.googleMapComponent.props.map.setZoom(nextProps.zoom);
-    // }
-  }
   componentWillUnmount() {
     this.props.hideAll();
     // this.intervals.forEach(clearInterval);
@@ -78,7 +67,7 @@ class FriendMap extends Component {
 
   render() {
     return (
-      <section style={{ height: '800px' }}>
+      <div style={{ position: 'absolute', height: '100%', width: '100%' }}>
         <GoogleMapLoader
           containerElement={
             <div
@@ -144,7 +133,7 @@ class FriendMap extends Component {
             </GoogleMap>
          }
         />
-      </section>
+      </div>
     );
   }
 }
@@ -156,7 +145,6 @@ FriendMap.propTypes = {
   zoom: React.PropTypes.number,
   hideAll: React.PropTypes.func,
   updateShowing: React.PropTypes.func,
-  // updateCenter: React.PropTypes.func,
 };
 
 export default FriendMap;
