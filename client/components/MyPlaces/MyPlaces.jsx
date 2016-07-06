@@ -40,7 +40,7 @@ class MyPlaces extends React.Component {
       <div>
         <h1>My Places</h1>
         <div className="row">
-          <div className="col s4">
+          <div className="col s3">
             <div className="section">
               <button onClick={(e) => { this.handleFilterType(e); }}>Starred</button>
               <button onClick={(e) => { this.handleFilterType(e); }}>Pinned</button>
@@ -53,7 +53,7 @@ class MyPlaces extends React.Component {
               />
             </div>
           </div>
-          <div className="col s8">
+          <div className="col s9">
             <Gmap
               displayPlaces={this.props.displayPlaces}
               hideAll={this.props.hideAll}

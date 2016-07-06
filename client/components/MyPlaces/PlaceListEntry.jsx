@@ -7,8 +7,14 @@ const PlaceListEntry = ({ index, place, onListClick }) => (
       onListClick(index, place)
       }
   >
-    <h5>{place.name}</h5>
-    <span>"{place.note}" -{place.userName} </span>
+    <div className="card-panel grey lighten-5 z-depth-1 hoverable">
+      <div>
+        {place.name}
+      </div>
+      <div>
+        <span style={{ fontStyle: 'italic' }}>"{place.note}"</span> -{place.userName}
+      </div>
+    </div>
   </div>
 );
 

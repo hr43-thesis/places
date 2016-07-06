@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, InfoWindow, Polyline } from 'react-google-maps';
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import * as actionsCreators from '../../redux/actions/displayPlacesActions';
+import measureMeters from '../../utils/math';
 
 class FriendMap extends Component {
   constructor(props) {
@@ -126,9 +124,11 @@ class FriendMap extends Component {
                   { lat: +marker.prevLat, lng: +marker.prevLng },
                 ];
                 const ref = `marker_${index}`;
-                // do some logic around updatedAt
+                // ensure the user is still moving, but not more than 300 meters at a time
                 const lineRender = new Date().getTime()
-                  - new Date(marker.locUpdatedAt).getTime() < 60000 ?
+                  - new Date(marker.locUpdatedAt).getTime() < 60000 &&
+                  measureMeters(+marker.currLat, +marker.currLng,
+                    +marker.prevLat, +marker.prevLng) < 300 ?
                   <Polyline
                     path={path}
                     key={index}
@@ -149,15 +149,6 @@ class FriendMap extends Component {
   }
 }
 
-// const mapStateToProps = (state) => (
-//   {
-//     places: state.places,
-//     displayPlaces: state.displayPlaces,
-//     favs: state.favs,
-//   }
-// );
-
-// const mapDispatchToProps = (dispatch) => bindActionCreators(actionsCreators, dispatch);
 
 FriendMap.propTypes = {
   displayUsers: React.PropTypes.array,
