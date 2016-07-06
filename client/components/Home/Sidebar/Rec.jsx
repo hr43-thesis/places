@@ -2,9 +2,11 @@ import React from 'react';
 import RecEntry from './RecEntry.jsx';
 
 const Rec = ({ recs }) => (
-  <div className="recommendations card-panel grey lighten-5 z-depth-1">
-    <h5>Recommendations</h5>
-    <div>
+  <div>
+    <div className="card-panel blue-grey lighten-5 z-depth-1">
+      Discover New Places
+    </div>
+    <div className="card-panel grey lighten-5 z-depth-1">
       {recs.map((rec, i) =>
         <RecEntry key={i} rec={rec} />
       )}

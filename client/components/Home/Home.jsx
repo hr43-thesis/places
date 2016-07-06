@@ -7,10 +7,12 @@ const Home = () => (
   <div className="row">
     <div className="col s3">
       <Profile />
-      <RecContainer />
     </div>
-    <div className="col s9">
+    <div className="col s6">
       <FeedContainer />
+    </div>
+    <div className="col s3">
+      <RecContainer />
     </div>
   </div>
 );

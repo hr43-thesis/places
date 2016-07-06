@@ -4,6 +4,8 @@ module.exports = {
   HOST: 'localhost',
   PORT: 7000,
   FB_CLIENT_ID: '',
+  BOT_SERVICE: '45.55.198.193',
+  BOT_PORT: 8080,
   RECS_PROTOCOL: 'http://',
   RECS_HOST: 'localhost',
   RECS_PORT: 9000,

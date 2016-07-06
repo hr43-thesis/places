@@ -48,7 +48,7 @@ class AppContainer extends Component {
 const mapStateToProps = function mapStateToProps(state) {
   return {
     isAuth: state.isAuth,
-    userId: state.user.id, // set to 1 for testing, should be: state.user.id,
+    userId: 1, // state.user.id, // set to 1 for testing, should be: state.user.id,
   };
 };
 
