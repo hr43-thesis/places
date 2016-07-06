@@ -8,6 +8,11 @@ export default function placesReducer(state = initialState.places, action) {
     case 'GET_FOLLOW_PLACES':
       return [...state, ...action.places];
 
+    case 'REMOVE_FOLLOW_PLACES':
+      return state.filter(place =>
+        place.userId !== action.followedId
+      );
+
     default:
       return state;
   }

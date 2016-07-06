@@ -14,6 +14,9 @@ export default function usersReducer(state = initialState.users, action) {
       });
       return [...state.slice(0, index), ...state.slice(index + 1)];
 
+    case 'ADD_UNFOLLOWED_USER':
+      return [...state, action.user];
+
     default:
       return state;
   }

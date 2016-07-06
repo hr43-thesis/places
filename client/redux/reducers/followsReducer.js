@@ -5,6 +5,11 @@ export default function followsReducer(state = initialState.follows, action) {
     case 'FOLLOW_USER':
       return [...state, action.user];
 
+    case 'UNFOLLOW_USER':
+      return state.filter(unfollow =>
+        unfollow.id !== action.followedId
+      );
+
     case 'GET_FOLLOWS':
       return action.follows;
 

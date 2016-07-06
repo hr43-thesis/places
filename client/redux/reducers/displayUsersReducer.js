@@ -4,7 +4,6 @@ import { store } from '../../client';
 export default function displayUsersReducer(state = initialState.users, action) {
   let displayUsers = [];
   let allUsers = [];
-
   if (store) {
     allUsers = [...store.getState().users, ...store.getState().follows];
   }

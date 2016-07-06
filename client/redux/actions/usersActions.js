@@ -17,6 +17,13 @@ export function removeFollowedUser(followedId) {
   };
 }
 
+export function addUnfollowedUser(user) {
+  return {
+    type: 'ADD_UNFOLLOWED_USER',
+    user,
+  };
+}
+
 export function fetchUsers() {
   return (dispatch) =>
     axios.get(`${serverUrl}/api/users`, { withCredentials: true })
