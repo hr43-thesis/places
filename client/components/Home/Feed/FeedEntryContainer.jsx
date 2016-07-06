@@ -22,6 +22,7 @@ class FeedEntryContainer extends Component {
 const mapStateToProps = function mapStateToProps(state) {
   return {
     userId: state.user.id,
+    favs: state.favs,
   };
 };
 
