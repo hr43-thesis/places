@@ -16,11 +16,12 @@ class BotsContainer extends React.Component {
     // this.props.combineUsers();
   }
 
-  handlePost(botId, posting) {
+  handlePost(botId, posting, location) {
     if (posting) {
       this.props.stopPosting(botId);
     } else {
-      this.props.startPosting(botId);
+      console.log('location being send is: ', location);
+      this.props.startPosting(botId, location);
     }
   }
 
@@ -37,7 +38,7 @@ class BotsContainer extends React.Component {
       <div>
         <Bots
           {...this.props}
-          handlePost={(botId, posting) => this.handlePost(botId, posting)}
+          handlePost={(botId, posting, location) => this.handlePost(botId, posting, location)}
           handleMoving={(botId, moving) => this.handleMoving(botId, moving)}
         />
       </div>

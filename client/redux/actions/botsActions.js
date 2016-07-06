@@ -53,13 +53,15 @@ export function getBots() {
   };
 }
 
-export function startPosting(userId) {
+export function startPosting(userId, location) {
   return (dispatch) => {
+    console.log('the post location is: ', location);
     const config = {
       url: `${serverUrl}/api/users/post`,
       method: 'POST',
       data: {
         userId,
+        location,
         interval: 10000,
       },
       withCredentials: true,

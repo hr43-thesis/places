@@ -20,7 +20,7 @@ const BotEntry = (props) => {
 
   const handleClick = () => {
     if (props.bot.type === 'posting') {
-      props.handlePost(props.bot.id, props.bot.posting);
+      props.handlePost(props.bot.id, props.bot.posting, props.bot.location);
     } else {
       props.handleMoving(props.bot.id, props.bot.moving);
     }
