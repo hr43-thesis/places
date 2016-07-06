@@ -1,9 +1,7 @@
 import React from 'react';
 
 const imgStyle = { height: '100px' };
-// const iconKey = {'on_foot':}
-// <i class="fa fa-car fa-3x" aria-hidden="true"></i>
-// <i class="fa fa-male fa-3x" aria-hidden="true"></i>
+
 
 const FriendListEntry = ({ person, index, onListClick }) => {
   let icon = null;
