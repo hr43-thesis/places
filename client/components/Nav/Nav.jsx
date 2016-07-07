@@ -1,13 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { handleLogout } from '../../redux/actions/authActions';
+import { loadPlaces } from '../../redux/actions/placesActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import api from '../../utils/api';
 
 class Nav extends React.Component {
 
   componentDidMount() {
     window.$('.button-collapse').sideNav();
+  }
+
+  handleReload() {
+    api.getPlaces(this.props.userId)
+      .then((places) => {
+        console.log('data incoming', places.data);
+        this.props.loadPlaces(places.data);
+      })
+      .catch((err) => {
+        console.log('There was an error.', err);
+      });
   }
 
   render() {
@@ -48,6 +61,11 @@ class Nav extends React.Component {
                 <Link to="/welcome" onClick={() => { this.props.handleLogout(); }}>
                   <i className="material-icons left">input</i>Logout
                 </Link>
+              </li>
+              <li>
+                <a onClick={() => { this.handleReload(); }}>
+                  <i className="material-icons left">replay</i>Reload
+                </a>
               </li>
             </ul>
             <ul id="mobile-demo" className="side-nav">
@@ -91,6 +109,7 @@ class Nav extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {
     handleLogout: bindActionCreators(handleLogout, dispatch),
+    loadPlaces: bindActionCreators(loadPlaces, dispatch),
   };
 }
 
@@ -98,12 +117,16 @@ const mapStateToProps = function mapStateToProps(state) {
   return {
     isAuth: state.isAuth,
     isAdmin: state.isAdmin,
+    userId: state.user.id,
   };
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
 
 Nav.propTypes = {
   handleLogout: React.PropTypes.func,
   isAdmin: React.PropTypes.bool,
+  userId: React.PropTypes.number,
+  handleReload: React.PropTypes.func,
+  loadPlaces: React.PropTypes.func,
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
