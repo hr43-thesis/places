@@ -1,44 +1,62 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { setAuth } from '../../redux/actions/authActions';
-import { bindActionCreators } from 'redux';
-import { store } from '../../client';
-import axios from 'axios';
+// import axios from 'axios';
 
-function loginUser() {
-  window.FB.login((response) => {
-    if (response.status === undefined) {
-      console.log('response is undefined');
-    } else {
-      // get request with token
-      console.log('auth response', response.authResponse);
-      console.log('entire response', response);
-      store.dispatch(setAuth(response.authResponse.accessToken));
-    } }, { scope: 'email' }, { return_scopes: true });
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    setAuth: bindActionCreators(setAuth, dispatch),
-  };
-}
-
-const mapStateToProps = function mapStateToProps(state) {
-  return {
-    isAuth: state.isAuth,
-  };
-};
-
-const Login = () => (
+const Login = (props) => (
   <div>
-    <h1>Login Page</h1>
-    <button onClick={() => axios.get('http://localhost:7000/test', { withCredentials: true })}>Check Session</button>
-    <button onClick={loginUser}>Login FB</button>
+    <div className="row">
+      <div className="topline col s12">
+      </div>
+      <div className="topNav col s12">
+        <img className="logo" alt="" src="images/compass.png" />
+        <span className="logoText">Places</span>
+      </div>
+    </div>
+    <div className="row">
+      <div className="splash col s12">
+        <div className="splashContent col s12">
+          <span className="tagline">
+            Where will Places take you?
+          </span>
+          <div className="login">
+            <button
+              onClick={props.handleLoginClick}
+              className="waves-effect waves-light btn"
+            >
+              Login to Discover
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="row divider">
+      <div className="col s12 m4 l4 bullets">
+        Tap into your friends’ discoveries
+      </div>
+      <div className="col s12 m4 l4 bullets">
+        Save your favorite places
+      </div>
+      <div className="col s12 m4 l4 bullets">
+        Coordinate location with friends
+      </div>
+    </div>
+    <div className="row">
+      <div className="col s12 m4 l4 placeOne">
+      </div>
+      <div className="col s12 m4 l4 placeTwo">
+      </div>
+      <div className="col s12 m4 l4 placeThree">
+      </div>
+    </div>
+    <div className="row">
+      <div className="col s12 footer">
+        Made with love in San Francisco
+      </div>
+    </div>
   </div>
 );
 
 Login.propTypes = {
-  setAuth: React.PropTypes.func,
+  handleLoginClick: React.PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
