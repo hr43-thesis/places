@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import ReactPlayer from 'react-player';
 
 
 class Gmap extends Component {
@@ -52,9 +53,19 @@ class Gmap extends Component {
         onCloseclick={(e) => this.handleMarkerClick(marker, index, e)}
       >
         <div>
-          <h4>{marker.name}</h4>
-          <br />
-          {marker.note}
+          <div style={{ fontSize: 'large', fontWeight: 'bold' }}>{marker.name}</div>
+          {marker.imageUrl ?
+            <img src={marker.imageUrl} alt={'loading...'} className="responsive-img" /> : null
+          }
+          {marker.videoUrl ?
+            <ReactPlayer
+              style={{ padding: '20px 0' }}
+              url={marker.videoUrl}
+              width={'100%'}
+              controls
+            /> : null
+          }
+          <div>{marker.note}</div>
         </div>
       </InfoWindow>
     );
