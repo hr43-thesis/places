@@ -28,7 +28,6 @@ export function fetchUsers() {
   return (dispatch) =>
     axios.get(`${serverUrl}/api/users`, { withCredentials: true })
     .then(({ data }) => {
-      console.log(data);
       dispatch(updateUsers(data));
       dispatch(updateDisplayUsers(data));
     });

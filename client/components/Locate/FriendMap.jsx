@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, InfoWindow, Polyline } from 'react-google-maps';
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import * as actionsCreators from '../../redux/actions/displayPlacesActions';
+import measureMeters from '../../utils/math';
 
 class FriendMap extends Component {
   constructor(props) {
@@ -19,18 +17,7 @@ class FriendMap extends Component {
     this.handleViewChanged = this.handleViewChanged.bind(this);
   }
 
-  componentWillMount() {
-  }
 
-  componentDidMount() {
-  }
-
-  componentWillReceiveProps() {
-    // this.setState({ center: nextProps.center });
-    // if (this.googleMapComponent) {
-    //   this.googleMapComponent.props.map.setZoom(nextProps.zoom);
-    // }
-  }
   componentWillUnmount() {
     this.props.hideAll();
     // this.intervals.forEach(clearInterval);
@@ -60,14 +47,17 @@ class FriendMap extends Component {
   }
 
   renderInfoWindow(ref, marker, index) {
-    const imgStyle = { height: '100px' };
+    const imgStyle = { height: '60px' };
     return (
       <InfoWindow
         key={`${ref}_info_window`}
         onCloseclick={(e) => this.handleMarkerClick(marker, index, e)}
+        options={{
+          maxWidth: 100,
+        }}
       >
         <div>
-          <h4>{marker.name}</h4>
+          <h5>{marker.name}</h5>
           <img alt={ref} style={imgStyle} src={marker.imageUrl} />
         </div>
       </InfoWindow>
@@ -77,7 +67,7 @@ class FriendMap extends Component {
 
   render() {
     return (
-      <section style={{ height: '800px' }}>
+      <div style={{ position: 'absolute', height: '100%', width: '100%' }}>
         <GoogleMapLoader
           containerElement={
             <div
@@ -99,7 +89,7 @@ class FriendMap extends Component {
               onBoundsChanged={this.handleViewChanged}
             >
               {this.props.displayUsers.map((marker, index) => {
-                const time = new Date(marker.updatedAt).getTime();
+                const time = new Date(marker.locUpdatedAt).getTime();
                 const ref = `marker_${index}`;
                 // do some logic around whether to show marker?
                 const renderMarker = (new Date().getTime() - time < 4 * Math.pow(10, 7) ?
@@ -123,9 +113,11 @@ class FriendMap extends Component {
                   { lat: +marker.prevLat, lng: +marker.prevLng },
                 ];
                 const ref = `marker_${index}`;
-                // do some logic around updatedAt
+                // ensure the user is still moving, but not more than 300 meters at a time
                 const lineRender = new Date().getTime()
-                  - new Date(marker.updatedAt).getTime() < 60000 ?
+                  - new Date(marker.locUpdatedAt).getTime() < 60000 &&
+                  measureMeters(+marker.currLat, +marker.currLng,
+                    +marker.prevLat, +marker.prevLng) < 300 ?
                   <Polyline
                     path={path}
                     key={index}
@@ -141,20 +133,11 @@ class FriendMap extends Component {
             </GoogleMap>
          }
         />
-      </section>
+      </div>
     );
   }
 }
 
-// const mapStateToProps = (state) => (
-//   {
-//     places: state.places,
-//     displayPlaces: state.displayPlaces,
-//     favs: state.favs,
-//   }
-// );
-
-// const mapDispatchToProps = (dispatch) => bindActionCreators(actionsCreators, dispatch);
 
 FriendMap.propTypes = {
   displayUsers: React.PropTypes.array,
@@ -162,7 +145,6 @@ FriendMap.propTypes = {
   zoom: React.PropTypes.number,
   hideAll: React.PropTypes.func,
   updateShowing: React.PropTypes.func,
-  // updateCenter: React.PropTypes.func,
 };
 
 export default FriendMap;

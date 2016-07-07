@@ -4,16 +4,17 @@ import { bindActionCreators } from 'redux';
 import * as followActions from '../../redux/actions/followActions';
 import * as locateActions from '../../redux/actions/locateActions';
 import FriendMap from './FriendMap.jsx';
+import FriendList from './FriendListContainer.jsx';
 
-const imgStyle = { height: '100px' };
 
 class Locate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: 'style',
       filterType: '',
     };
+    this.handleListClick = this.handleListClick.bind(this);
+
     this.props.getLocationInfo.bind(this);
     this.props.loadLocate.bind(this);
     this.intervals = [];
@@ -32,11 +33,6 @@ class Locate extends React.Component {
     this.intervals.forEach(clearInterval);
   }
 
-  handleFilterType(e) {
-    // place holder
-    console.log('e: ', e.target.firstChild.nodeValue);
-    console.log('this: ', this);
-  }
 
   handleListClick(index, user) {
     if (user.showInfo) {
@@ -51,28 +47,20 @@ class Locate extends React.Component {
   render() {
     return (
       <div>
-        <h1>Locate Friends</h1>
         <div className="row">
-          <div className="col s4">
-            Followed Friends
+          <div style={{ paddingTop: '20px' }} className="col s3">
+            <span style={{ fontSize: 'medium', fontStyle: 'italic' }}>
+              Friends with recently updated location...
+            </span>
             <div className="divider" />
             <div className="section">
-              <ul>
-                {this.props.locate.map((user, index) => (
-                  <li key={index}>
-                    {user.name}<br />
-                    <img
-                      onClick={() => this.handleListClick(index, user)}
-                      alt="loading"
-                      style={imgStyle}
-                      src={user.imageUrl}
-                    />
-                  </li>
-                ))}
-              </ul>
+              <FriendList
+                onListClick={this.handleListClick}
+                locate={this.props.locate}
+              />
             </div>
           </div>
-          <div className="col s8">
+          <div className="col s9">
             {this.props.locate.length > 0 ?
               <FriendMap
                 displayUsers={this.props.locate || []}

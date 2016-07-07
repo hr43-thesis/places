@@ -3,6 +3,7 @@ import Gmap from './Gmap.jsx';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionsCreators from '../../redux/actions/displayPlacesActions';
+import PlaceList from './PlaceListContainer.jsx';
 
 class MyPlaces extends React.Component {
   constructor(props) {
@@ -10,21 +11,23 @@ class MyPlaces extends React.Component {
     this.state = {
       filterBy: 'Pinned',
     };
+    this.handleListClick = this.handleListClick.bind(this);
   }
+
   componentWillMount() {
     this.props.updateDisplayPlaces(this.props.places, this.props.userId, 'Pinned');
   }
 
-  handleFilterType(e) {
-    // place holder
-    const filter = e.target.firstChild.nodeValue;
-    // this.setState({ filterType: e.target.firstChild.nodeValue });
-    this.setState({ filterBy: filter });
-    this.props.updateDisplayPlaces(this.props.places, this.props.userId,
-      filter, this.props.favs);
+  handleFilterType(e, filterItem) {
+    this.props.clearDisplay();
+    setTimeout(() => {
+      this.setState({ filterBy: filterItem });
+      this.props.updateDisplayPlaces(this.props.places, this.props.userId,
+        filterItem, this.props.favs);
+    }, 200);
   }
 
-  handleListClick(place, index) {
+  handleListClick(index, place) {
     if (place.showInfo) {
       this.props.hideAll();
     } else {
@@ -36,27 +39,40 @@ class MyPlaces extends React.Component {
   render() {
     return (
       <div>
-        <h1>My Places</h1>
         <div className="row">
-          <div className="col s4">
-            <div className="section">
-              Filter will go here
-              <button onClick={(e) => { this.handleFilterType(e); }}>Starred</button>
-              <button onClick={(e) => { this.handleFilterType(e); }}>Pinned</button>
-            </div>
+          <div style={{ paddingTop: '20px' }} className="col s3">
+            <p>
+              <input
+                className="with-gap"
+                name="placeTypes"
+                type="radio"
+                id="pinned"
+                checked={this.state.filterBy === 'Pinned'}
+                onClick={(e) => this.handleFilterType(e, 'Pinned')}
+              />
+              <label htmlFor="pinned">Pinned</label>
+            </p>
+            <p>
+              <input
+                className="with-gap"
+                name="placeTypes"
+                type="radio"
+                id="starred"
+                checked={this.state.filterBy === 'Starred'}
+                onClick={(e) => this.handleFilterType(e, 'Starred')}
+              />
+              <label htmlFor="starred">Starred</label>
+            </p>
+            <div className="divider" />
             <div className="divider" />
             <div className="section">
-              List will go here
-              <ul>
-                {this.props.displayPlaces.map((place, index) => (
-                  <li onClick={() => this.handleListClick(place, index)}>
-                    {place.name}
-                  </li>
-                ))}
-              </ul>
+              <PlaceList
+                onListClick={this.handleListClick}
+                places={this.props.displayPlaces}
+              />
             </div>
           </div>
-          <div className="col s8">
+          <div className="col s9">
             <Gmap
               displayPlaces={this.props.displayPlaces}
               hideAll={this.props.hideAll}
@@ -78,6 +94,7 @@ MyPlaces.propTypes = {
   updateDisplayPlaces: React.PropTypes.func,
   updateShowing: React.PropTypes.func,
   hideAll: React.PropTypes.func,
+  clearDisplay: React.PropTypes.func,
 };
 
 const mapStateToProps = (state) => (

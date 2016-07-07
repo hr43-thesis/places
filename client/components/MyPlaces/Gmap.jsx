@@ -46,6 +46,9 @@ class Gmap extends Component {
     return (
       <InfoWindow
         key={`${ref}_info_window`}
+        options={{
+          maxWidth: 300,
+        }}
         onCloseclick={(e) => this.handleMarkerClick(marker, index, e)}
       >
         <div>
@@ -60,7 +63,7 @@ class Gmap extends Component {
 
   render() {
     return (
-      <section style={{ height: '800px' }}>
+      <div style={{ position: 'absolute', height: '100%', width: '100%' }}>
         <GoogleMapLoader
           containerElement={
             <div
@@ -101,7 +104,7 @@ class Gmap extends Component {
             </GoogleMap>
          }
         />
-      </section>
+      </div>
     );
   }
 }

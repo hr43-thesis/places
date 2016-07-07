@@ -6,6 +6,12 @@ export function loadDisplayPlaces(places, userId) {
   };
 }
 
+export function clearDisplay() {
+  return {
+    type: 'CLEAR_DISPLAY',
+  };
+}
+
 export function updateDisplayPlaces(places, userId, filter, favs) {
   return { type: 'FILTER_PLACES', places, userId, filter, favs };
 }
