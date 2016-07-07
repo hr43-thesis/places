@@ -1,7 +1,5 @@
-import { places } from '../../../sample.js';
-
 export default {
-  places,
+  places: [],
   displayPlaces: [],
   user: {},
   follows: [],

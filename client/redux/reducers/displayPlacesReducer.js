@@ -12,7 +12,6 @@ export default function displayPlacesReducer(state = initialState.displayPlaces,
     }
 
     case 'CLEAR_DISPLAY': {
-      console.log('clearing');
       return [];
     }
 
