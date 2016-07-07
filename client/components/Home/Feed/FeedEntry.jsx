@@ -51,6 +51,7 @@ const FeedEntry = (props) => {
             <img src={props.place.imageUrl} alt={props.place.name} className="responsive-img" /> :
             <ReactPlayer
               url={props.place.videoUrl}
+              width={'100%'}
               controls
             />
           }
