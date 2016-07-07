@@ -1,5 +1,5 @@
 import React from 'react';
-import Gmap from './Gmap.jsx';
+import Gmap from './PlaceGmap.jsx';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionsCreators from '../../redux/actions/displayPlacesActions';

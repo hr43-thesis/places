@@ -5,8 +5,8 @@ import Home from './components/Home/Home.jsx';
 import LoginContainer from './components/Login/LoginContainer.jsx';
 import Auth from './components/HOC/Auth.jsx';
 import FollowContainer from './components/Follow/FollowContainer.jsx';
-import MyPlaces from './components/MyPlaces/MyPlaces.jsx';
-import Locate from './components/Locate/LocateContainer.jsx';
+import MyPlaces from './components/MyPlaces/MyPlacesView.jsx';
+import Locate from './components/Locate/LocateView.jsx';
 import BotsContainer from './components/Bots/BotsContainer.jsx';
 
 export default (

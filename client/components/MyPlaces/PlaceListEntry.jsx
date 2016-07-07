@@ -19,7 +19,7 @@ const PlaceListEntry = ({ index, place, onListClick }) => (
           </i></a>
         </div>
         <div className="col s10">
-          {place.name}
+          <span style={{ fontWeight: 'bold', fontSize: 'large' }}>{place.name}</span>
         </div>
         <div>
           <span style={{ fontStyle: 'italic' }}>"{place.note}"</span> -{place.userName}
