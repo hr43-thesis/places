@@ -1,3 +1,127 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,300);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+}
+
+/* begin styling for landing page */
+
+.topline {
+  height: 5px;
+  position: fixed;
+  left: 0;
+  z-index: 1000;
+  background: red; /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(left,orange,yellow,green,blue,indigo,violet);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(left,orange,yellow,green,blue,indigo,violet);
+  /* For Fx 3.6 to 15 */
+  background: -moz-linear-gradient(left,orange,yellow,green,blue,indigo,violet);
+  /* Standard syntax */
+  background: linear-gradient(to right,orange,yellow,green,blue,indigo,violet); 
+}
+
+.topNav {
+  position: fixed;
+  height: 70px;
+  display: block;
+  font-family: 'Lobster', cursive;
+  font-size: 2em;
+  font-weight: 300;
+  top: 0;
+  z-index: 900;
+  background-color: #fff;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+.logoText {
+  margin-left: .5em;
+  margin-bottom: .7em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.splash {
+  background-image: url("images/splash-image2.jpg");
+  height: 35vw;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+}
+
+.splashContent {
+  text-align: center;
+  display: block;
+  margin-top: 100px;
+}
+
+.tagline {
+  font-size: 5vw;
+  color: #ccc;
+}
+
+.login button {
+  width: 15vw;
+  height: 4vw;
+  font-size: 1vw;
+}
+
+.divider {
+  height: 10vw;
+}
+
+.placeOne {
+  background-image: url("images/friends.jpg");
+  height: 25vw;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.placeTwo {
+  background-image: url("images/city-lights.jpeg");
+  height: 25vw;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.placeThree {
+  background-image: url("images/sf-city.jpg");
+  height: 25vw;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.bullets {
+  text-align: center;
+  font-size: 2vw;
+  margin-top: 3.4vw;
+}
+
+.footer {
+  background-color: #eceff1;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+/* end styling for landing page */
+
 /**
  * The geosuggest module
  */

@@ -19,7 +19,7 @@ const mapStateToProps = function mapStateToProps(state) {
   return {
     places: state.places,
     displayPlaces: state.displayPlaces,
-    userId: 1, // state.user.id,
+    userId: state.user.id,
   };
 };
 
