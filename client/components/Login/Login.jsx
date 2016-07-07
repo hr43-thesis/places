@@ -28,7 +28,7 @@ const Login = (props) => (
         </div>
       </div>
     </div>
-    <div className="row divider">
+    <div className="row splashDivider">
       <div className="col s12 m4 l4 bullets">
         Tap into your friends’ discoveries
       </div>

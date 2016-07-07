@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, InfoWindow, Polyline } from 'react-google-maps';
-import measureMeters from '../../utils/math';
+// import measureMeters from '../../utils/math';
 
 class FriendMap extends Component {
   constructor(props) {
@@ -115,9 +115,9 @@ class FriendMap extends Component {
                 const ref = `marker_${index}`;
                 // ensure the user is still moving, but not more than 300 meters at a time
                 const lineRender = new Date().getTime()
-                  - new Date(marker.locUpdatedAt).getTime() < 60000 &&
+                  - new Date(marker.locUpdatedAt).getTime() < 60000 /* &&
                   measureMeters(+marker.currLat, +marker.currLng,
-                    +marker.prevLat, +marker.prevLng) < 300 ?
+                    +marker.prevLat, +marker.prevLng)  < 300 */ ?
                   <Polyline
                     path={path}
                     key={index}
