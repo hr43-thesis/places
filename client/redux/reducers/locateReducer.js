@@ -4,9 +4,13 @@ export default function displayPlacesReducer(state = initialState.locate, action
   switch (action.type) {
 
     case 'LOAD_LOCATE': {
-      return action.follows.map(follow => (
-        Object.assign({}, follow, { showInfo: false })
-      ));
+      let results = [];
+      if (Array.isArray(action.follows)) {
+        results = action.follows.map(follow => (
+          Object.assign({}, follow, { showInfo: false })
+        ));
+      }
+      return results;
     }
 
     case 'UPDATE_FOLLOWS_LOCATION': {
