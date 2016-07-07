@@ -53,19 +53,22 @@ class Gmap extends Component {
         onCloseclick={(e) => this.handleMarkerClick(marker, index, e)}
       >
         <div>
-          <div style={{ fontSize: 'large', fontWeight: 'bold' }}>{marker.name}</div>
+          <div
+            style={{ fontSize: 'large', fontWeight: 'bold', marginBottom: '10px' }}
+          >
+            {marker.name}
+          </div>
           {marker.imageUrl ?
             <img src={marker.imageUrl} alt={'loading...'} className="responsive-img" /> : null
           }
           {marker.videoUrl ?
             <ReactPlayer
-              style={{ padding: '20px 0' }}
               url={marker.videoUrl}
               width={'100%'}
               controls
             /> : null
           }
-          <div>{marker.note}</div>
+          <div style={{ marginTop: '10px' }}>{marker.note}</div>
         </div>
       </InfoWindow>
     );
