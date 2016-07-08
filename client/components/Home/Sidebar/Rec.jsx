@@ -4,7 +4,7 @@ import RecEntry from './RecEntry.jsx';
 const Rec = ({ recs }) => (
   <div>
     <div className="card-panel blue-grey lighten-5 z-depth-1">
-      Discover New Places
+      <h6>Discover New Places</h6>
     </div>
     <div className="card-panel grey lighten-5 z-depth-1">
       {recs.map((rec, i) =>

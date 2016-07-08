@@ -18,8 +18,6 @@ class AppContainer extends Component {
         this.props.loadPlaces(places.data);
         this.props.loadDisplayPlaces(places.data, this.props.userId);
       })
-      .then(() => {
-      })
       .catch((err) => {
         console.log('There was an error:', err);
       });

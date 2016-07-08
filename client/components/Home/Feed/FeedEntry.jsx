@@ -10,6 +10,16 @@ const userImageUrl = {
   width: '50px',
   height: '50px',
 };
+const placeTitleStyle = {
+  'font-size': '16px',
+  'margin-top': '5px',
+  'font-weight': 'bold',
+};
+const noteStyle = {
+  'font-size': '20px',
+  'margin-top': '5px',
+  'font-weight': 'bold',
+};
 
 const FeedEntry = (props) => {
   let mediaButton;
@@ -69,43 +79,44 @@ const FeedEntry = (props) => {
       </div>
       <div className="card-panel grey lighten-5 z-depth-1 hoverable">
         <div className="row valign-wrapper">
-          <div className="col s2">
+          <div className="col s2" style={{ 'text-align': 'center' }}>
             <img
               src={props.place.userImageUrl} alt=""
               className="responsive-img" style={userImageUrl}
             />
+            <div style={{ 'font-weight': 'bold' }}>
+              {props.place.userName}
+            </div>
           </div>
           <div className="col s10">
-            <span className="black-text">
-              {props.place.userName} was at {' '}
-              {props.place.name} on {' '}
-              {props.place.createdAt}
-              {' '}
-              <div>
-                {props.place.note}
-              </div>
-              {' '}
-              {props.favs.includes(props.place.userPlaceId) ?
-                <i className="material-icons">
+            <span style={placeTitleStyle}>
+              {props.place.name}</span> on {' '}
+            {props.place.createdAt}
+            {' '}
+            <div style={noteStyle}>
+              {props.place.note}
+            </div>
+            {' '}
+            {props.favs.includes(props.place.userPlaceId) ?
+              <i className="material-icons">
+              star
+              </i> :
+              <a style={{ cursor: 'pointer' }}>
+                <i
+                  className="material-icons"
+                  onClick={() =>
+                  props.actions.addFav(
+                    props.userId,
+                    props.place.placeId,
+                    props.place.userPlaceId
+                  )}
+                >
                 star
-                </i> :
-                <a style={{ cursor: 'pointer' }}>
-                  <i
-                    className="material-icons"
-                    onClick={() =>
-                    props.actions.addFav(
-                      props.userId,
-                      props.place.placeId,
-                      props.place.userPlaceId
-                    )}
-                  >
-                  star
-                  </i>
-                </a>
-              }
-              {' '}
-              {mediaButton}
-            </span>
+                </i>
+              </a>
+            }
+            {' '}
+            {mediaButton}
           </div>
         </div>
       </div>

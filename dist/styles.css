@@ -14,6 +14,12 @@ body {
   font-weight: 300;
 }
 
+/* logo font inside the app */
+.brand-logo {
+  font-family: 'Lobster', cursive;
+  margin-left: 20px;
+}
+
 /* begin styling for landing page */
 
 .topline {
