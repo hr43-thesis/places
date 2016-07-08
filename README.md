@@ -57,11 +57,11 @@ There are 4 microservices which empower Places:
 
 ### Services Diagram
 
-
+![View Service Diagram](https://raw.githubusercontent.com/places-app/places-app-web/master/docs/architecture.png)
 
 ### Schema Diagram
 
-
+![View Schema Diagram](https://raw.githubusercontent.com/places-app/places-app-web/master/docs/schema.png)
 
 ## Tech Stack
 
