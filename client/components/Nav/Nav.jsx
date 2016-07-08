@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { handleLogout } from '../../redux/actions/authActions';
 import { loadPlaces } from '../../redux/actions/placesActions';
+import { loadDisplayPlaces } from '../../redux/actions/displayPlacesActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import api from '../../utils/api';
@@ -15,8 +16,9 @@ class Nav extends React.Component {
   handleReload() {
     api.getPlaces(this.props.userId)
       .then((places) => {
-        console.log('data incoming', places.data);
+        console.log('Updating places...', places.data);
         this.props.loadPlaces(places.data);
+        this.props.loadDisplayPlaces(places.data, this.props.userId);
       })
       .catch((err) => {
         console.log('There was an error.', err);
@@ -63,8 +65,8 @@ class Nav extends React.Component {
                 </Link>
               </li>
               <li>
-                <a onClick={() => { this.handleReload(); }}>
-                  <i className="material-icons left">replay</i>Reload
+                <a alt="Update places feed" onClick={() => { this.handleReload(); }}>
+                  <i className="material-icons left">replay</i>
                 </a>
               </li>
             </ul>
@@ -110,6 +112,7 @@ function mapDispatchToProps(dispatch) {
   return {
     handleLogout: bindActionCreators(handleLogout, dispatch),
     loadPlaces: bindActionCreators(loadPlaces, dispatch),
+    loadDisplayPlaces: bindActionCreators(loadDisplayPlaces, dispatch),
   };
 }
 
@@ -127,6 +130,7 @@ Nav.propTypes = {
   userId: React.PropTypes.number,
   handleReload: React.PropTypes.func,
   loadPlaces: React.PropTypes.func,
+  loadDisplayPlaces: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
