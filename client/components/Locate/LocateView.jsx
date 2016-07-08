@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as followActions from '../../redux/actions/followActions';
 import * as locateActions from '../../redux/actions/locateActions';
-import FriendMap from './FriendMap.jsx';
+import FriendMap from './FriendGmap.jsx';
 import FriendList from './FriendListContainer.jsx';
 
 
