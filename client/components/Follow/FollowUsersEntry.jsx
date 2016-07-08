@@ -36,7 +36,7 @@ const FollowUsersEntry = ({ user, followed, handleFollowUser }) => {
             </span>
           </div>
           <div className="col s1 star pull-s2">
-            <i className="small material-icons">thumb_up</i>
+            <i className="fa fa-bolt fa-2x" aria-hidden="true"></i>
             <span>{user.repCount}</span>
           </div>
         </div>
