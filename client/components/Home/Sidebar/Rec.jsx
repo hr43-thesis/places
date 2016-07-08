@@ -7,8 +7,10 @@ const Rec = ({ recs }) => (
       <h6>Discover New Places</h6>
     </div>
     <div className="card-panel grey lighten-5 z-depth-1">
-      {recs.map((rec, i) =>
-        <RecEntry key={i} rec={rec} />
+      {recs.length === 0 ?
+        <RecEntry rec={'Start posting places to get recommendations'} />
+        : recs.map((rec, i) =>
+          <RecEntry key={i} rec={rec} />
       )}
     </div>
   </div>

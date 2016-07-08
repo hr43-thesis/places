@@ -23,14 +23,10 @@ const FollowUsersEntry = ({ user, followed, handleFollowUser }) => {
               <i className="material-icons">{symbol}</i>
             </a>
           </div>
-          <div className="col s3 push-s5 offset-s2">
-            <img src={user.imageUrl} alt="" className="responsive-img" />
+          <div className="col s3">
+            <img src={user.imageUrl} alt="" className="responsive-img followImg" />
           </div>
-          <div className="col s1">
-            <i className="material-icons">stars</i>
-            {user.repCount}
-          </div>
-          <div className="col s5 pull-s5 offset-s1">
+          <div className="col s3 pull-s2">
             <span className="black-text">
               <h5 className="valign-wrapper">
                 {user.name}
@@ -38,6 +34,10 @@ const FollowUsersEntry = ({ user, followed, handleFollowUser }) => {
               {' '}
               {user.email}
             </span>
+          </div>
+          <div className="col s1 star pull-s2">
+            <i className="fa fa-bolt fa-2x" aria-hidden="true"></i>
+            <span>{user.repCount}</span>
           </div>
         </div>
       </div>

@@ -3,14 +3,19 @@ import React from 'react';
 class SearchUsers extends React.Component {
   render() {
     return (
-      <div>
-        <input
-          // style={{ position: 'fixed' }}
-          type="text"
-          placeholder="Find a friend..."
-          ref="search"
-          onChange={() => this.props.handleSearchUser(this.refs.search.value)}
-        />
+      <div className="row valign-wrapper">
+        <div className="col">
+          <i className="material-icons">search</i>
+        </div>
+        <div className="col input-field s12">
+          <input
+            id="search"
+            type="search"
+            placeholder="Find users to follow"
+            ref="search"
+            onChange={() => this.props.handleSearchUser(this.refs.search.value)}
+          />
+        </div>
       </div>
     );
   }
