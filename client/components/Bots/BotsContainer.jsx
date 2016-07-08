@@ -13,7 +13,7 @@ class BotsContainer extends React.Component {
   // }
 
   componentWillMount() {
-    // this.props.combineUsers();
+    this.props.getBots();
   }
 
   handlePost(botId, posting, location) {
@@ -62,7 +62,7 @@ function mapDispatchToProps(dispatch) {
     setPostCenter: bindActionCreators(botsList.setPostCenter, dispatch),
     setOrigin: bindActionCreators(botsList.setOrigin, dispatch),
     setDestination: bindActionCreators(botsList.setDestination, dispatch),
-
+    getBots: bindActionCreators(Actions.getBots, dispatch),
   };
 }
 
@@ -70,6 +70,7 @@ BotsContainer.propTypes = {
   startPosting: React.PropTypes.func,
   stopPosting: React.PropTypes.func,
   addBot: React.PropTypes.func,
+  getBots: React.PropTypes.func,
   startMoving: React.PropTypes.func,
   stopMoving: React.PropTypes.func,
   toggleBotSelect: React.PropTypes.func,
