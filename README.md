@@ -1,5 +1,6 @@
 # Places
 
+> [Access live app here](http://104.131.90.36/)
 > Save the places you love most.
 > Discover places your friends love.
 
@@ -10,8 +11,8 @@
 1. [Technology](#technology)
 1. [Microservices](#microservices)
 1. [Development](#development)
+    1. [Environmental Variables](#environmental-variables)
     1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
