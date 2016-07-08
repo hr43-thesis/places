@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import Follow from './Follow.jsx';
 import * as actions from '../../redux/actions/followActions';
 import { combineUsers } from '../../redux/actions/displayUsersActions';
-import { removeFollowedUser, addUnfollowedUser } from '../../redux/actions/usersActions';
+import {
+  removeFollowedUser,
+  addUnfollowedUser,
+  fetchUsers,
+} from '../../redux/actions/usersActions';
 import api from '../../utils/api';
 
 class FollowContainer extends React.Component {
@@ -14,7 +18,10 @@ class FollowContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.combineUsers();
+    this.props.fetchUsers()
+    .then(() => {
+      this.props.combineUsers();
+    });
   }
 
   handleSearchUser(input) {
@@ -77,6 +84,7 @@ FollowContainer.propTypes = {
   combineUsers: React.PropTypes.func,
   removeFollowedUser: React.PropTypes.func,
   addUnfollowedUser: React.PropTypes.func,
+  fetchUsers: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps,
@@ -88,4 +96,5 @@ export default connect(mapStateToProps,
     combineUsers,
     removeFollowedUser,
     addUnfollowedUser,
+    fetchUsers,
   })(FollowContainer);
