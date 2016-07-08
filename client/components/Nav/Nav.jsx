@@ -30,12 +30,11 @@ class Nav extends React.Component {
       <div className="navbar-fixed">
         <nav>
           <div className="nav-wrapper blue-grey">
-            <a href="#!" className="brand-logo">Places</a>
+            <Link to="/" className="brand-logo">Places</Link>
             <a href="#" data-activates="mobile-demo" className="button-collapse">
               <i className="material-icons">menu</i>
             </a>
             <ul className="right hide-on-med-and-down">
-              <li><Link to="/"><i className="material-icons left">list</i>Home</Link></li>
               <li>
                 <Link to="/myplaces">
                   <i className="material-icons left">person_pin</i>My Places
@@ -52,7 +51,7 @@ class Nav extends React.Component {
                   </Link>
                 </li> : null
               }
-              {this.props.isAdmin ?
+              {false ?
                 <li>
                   <Link to="/stats">
                     <i className="material-icons left">assessment</i>App Stats
@@ -71,7 +70,11 @@ class Nav extends React.Component {
               </li>
             </ul>
             <ul id="mobile-demo" className="side-nav">
-              <li><Link to="/"><i className="material-icons left">list</i>Home</Link></li>
+              <li>
+                <Link to="/">
+                  <i className="material-icons left">list</i>Home
+                </Link>
+              </li>
               <li>
                 <Link to="/myplaces">
                   <i className="material-icons left">person_pin</i>My Places
@@ -88,7 +91,7 @@ class Nav extends React.Component {
                   </Link>
                 </li> : null
               }
-              {this.props.isAdmin ?
+              {false ?
                 <li>
                   <Link to="/stats">
                     <i className="material-icons left">assessment</i>App Stats
