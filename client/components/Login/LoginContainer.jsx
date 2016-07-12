@@ -3,7 +3,7 @@ import Login from './Login.jsx';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import { store } from '../../client';
-import { setAuth } from '../../redux/actions/authActions';
+import { setAuth, setGuest } from '../../redux/actions/authActions';
 // import axios from 'axios';
 
 class LoginContainer extends React.Component {
@@ -47,11 +47,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     setAuth: bindActionCreators(setAuth, dispatch),
+    setGuest: bindActionCreators(setGuest, dispatch),
   };
 }
 
 LoginContainer.propTypes = {
   setAuth: React.PropTypes.func,
+  setGuest: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

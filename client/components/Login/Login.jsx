@@ -1,5 +1,4 @@
 import React from 'react';
-// import axios from 'axios';
 
 const Login = (props) => (
   <div>
@@ -25,7 +24,7 @@ const Login = (props) => (
               Login to Discover
             </div>
             <div
-              onClick={() => console.log('hit gues')}
+              onClick={props.setGuest}
               className="waves-effect waves-light btn-large"
             >
               Login as Guest
@@ -63,6 +62,7 @@ const Login = (props) => (
 
 Login.propTypes = {
   handleLoginClick: React.PropTypes.func,
+  setGuest: React.PropTypes.func,
 };
 
 export default Login;

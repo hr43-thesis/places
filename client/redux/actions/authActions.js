@@ -27,6 +27,29 @@ export function setAuth(fbToken) {
   };
 }
 
+export function setGuest() {
+  let userData;
+  return (dispatch) => {
+    axios.get(`${serverUrl}/guest`, { withCredentials: true })
+    .then(({ status, data }) => {
+      userData = data;
+      if (status === 200) {
+        return dispatch({
+          type: 'SET_AUTH',
+          isAuth: true,
+        });
+      }
+      return null;
+    })
+    .then((action) => {
+      if (action.type === 'SET_AUTH') {
+        dispatch(loadUser(userData));
+        dispatch(push('/'));
+      }
+    });
+  };
+}
+
 export function handleLogout() {
   return (dispatch) => {
     axios.get(`${serverUrl}/logout`, { withCredentials: true })
