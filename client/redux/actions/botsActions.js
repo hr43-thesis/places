@@ -20,7 +20,6 @@ export function addBot(type, location, origin, destination) {
 
     axios(config)
     .then(({ status, data }) => {
-      console.log(data);
       if (status === 200) {
         return dispatch({
           type: 'ADD_BOT',
@@ -44,18 +43,11 @@ export function getBots() {
       }
       return null;
     });
-  //   .then((action) => {
-  //     if (action.type === 'SET_AUTH') {
-  //       dispatch(loadUser(userData));
-  //       dispatch(push('/'));
-  //     }
-  //   });
   };
 }
 
 export function startPosting(userId, location) {
   return (dispatch) => {
-    console.log('the post location is: ', location);
     const config = {
       url: `${serverUrl}/api/users/post`,
       method: 'POST',
@@ -70,7 +62,6 @@ export function startPosting(userId, location) {
 
     axios(config)
     .then(({ status, data }) => {
-      console.log(data);
       if (status === 200) {
         return dispatch({
           type: 'SET_POSTING',
@@ -98,7 +89,6 @@ export function stopPosting(userId) {
 
     axios(config)
     .then(({ status, data }) => {
-      console.log(data);
       if (status === 200) {
         return dispatch({
           type: 'SET_POSTING',
@@ -127,7 +117,6 @@ export function startMoving(userId) {
 
     axios(config)
     .then(({ status, data }) => {
-      console.log(data);
       if (status === 200) {
         return dispatch({
           type: 'SET_MOVING',
@@ -155,7 +144,6 @@ export function stopMoving(userId) {
 
     axios(config)
     .then(({ status, data }) => {
-      console.log(data);
       if (status === 200) {
         return dispatch({
           type: 'SET_MOVING',

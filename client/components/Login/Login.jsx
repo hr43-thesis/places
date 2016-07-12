@@ -1,5 +1,4 @@
 import React from 'react';
-// import axios from 'axios';
 
 const Login = (props) => (
   <div>
@@ -18,12 +17,18 @@ const Login = (props) => (
             Where will Places take you?
           </span>
           <div className="login">
-            <button
+            <div
               onClick={props.handleLoginClick}
-              className="waves-effect waves-light btn"
+              className="waves-effect waves-light btn-large mainLogin"
             >
               Login to Discover
-            </button>
+            </div>
+            <div
+              onClick={props.setGuest}
+              className="waves-effect waves-light btn-large"
+            >
+              View Demo
+            </div>
           </div>
         </div>
       </div>
@@ -49,7 +54,7 @@ const Login = (props) => (
     </div>
     <div className="row">
       <div className="col s12 footer">
-        Made with love in San Francisco
+        Made with ❤ in San Francisco
       </div>
     </div>
   </div>
@@ -57,6 +62,7 @@ const Login = (props) => (
 
 Login.propTypes = {
   handleLoginClick: React.PropTypes.func,
+  setGuest: React.PropTypes.func,
 };
 
 export default Login;

@@ -4,9 +4,8 @@ import BotEntry from './BotEntry.jsx';
 const BotsList = ({ bots, handlePost, handleMoving }) => (
   <div>
     {bots.map((bot, i) => (
-      <div>
+      <div key={i}>
         <BotEntry
-          key={i}
           bot={bot}
           handlePost={handlePost}
           handleMoving={handleMoving}

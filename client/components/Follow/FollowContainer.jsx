@@ -32,7 +32,6 @@ class FollowContainer extends React.Component {
     const userId = this.props.user.id;
     api.followUser(userId, followedId, followed)
     .then(res => {
-      console.log(`${res.status}: Got successful response back from server.`);
       if (followed) {
         this.props.unfollowUser(followedId);
         this.props.addUnfollowedUser(res.data);
@@ -42,7 +41,6 @@ class FollowContainer extends React.Component {
         this.props.removeFollowedUser(followedId);
         api.getFollowPlaces(followedId)
         .then(resp => {
-          console.log(`${resp.status}: Got successful response back from server.`);
           this.props.getFollowPlaces(resp.data);
         });
       }

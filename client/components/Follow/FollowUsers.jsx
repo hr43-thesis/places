@@ -13,9 +13,8 @@ const FollowUsers = ({ displayUsers, follows, handleFollowUser }) => (
         });
       }
       return (
-        <div>
+        <div key={i}>
           <FollowUsersEntry
-            key={i}
             user={user}
             handleFollowUser={handleFollowUser}
             followed={followed}
