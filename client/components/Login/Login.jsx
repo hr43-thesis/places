@@ -27,7 +27,7 @@ const Login = (props) => (
               onClick={props.setGuest}
               className="waves-effect waves-light btn-large"
             >
-              Login as Guest
+              View Demo
             </div>
           </div>
         </div>
