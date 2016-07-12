@@ -84,7 +84,7 @@ const FeedEntry = (props) => {
               src={props.place.userImageUrl} alt=""
               className="responsive-img" style={userImageUrl}
             />
-            <div style={{ fontWeigh: 'bold' }}>
+            <div style={{ fontWeight: 'bold' }}>
               {props.place.userName}
             </div>
           </div>
