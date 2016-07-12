@@ -18,13 +18,10 @@ class LoginContainer extends React.Component {
   }
 
   handleLoginClick() {
-    console.log('login clicked!');
     window.FB.login((response) => {
       if (response.status === undefined) {
         console.log('response is undefined.');
       } else {
-        console.log('auth resp', response.authResponse);
-        console.log('entire resp', response);
         const accessToken = response.authResponse.accessToken;
         this.props.setAuth(accessToken);
       }

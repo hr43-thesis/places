@@ -6,12 +6,6 @@ import * as Actions from '../../redux/actions/botsActions';
 import * as botsList from '../../redux/actions/botsListActions';
 
 class BotsContainer extends React.Component {
-  // constructor() {
-  //   super();
-  //   // this.handleStart = this.handleStart.bind(this);
-  //   // this.handleFollowUser = this.handleFollowUser.bind(this);
-  // }
-
   componentWillMount() {
     this.props.getBots();
   }
@@ -20,7 +14,6 @@ class BotsContainer extends React.Component {
     if (posting) {
       this.props.stopPosting(botId);
     } else {
-      console.log('location being send is: ', location);
       this.props.startPosting(botId, location);
     }
   }

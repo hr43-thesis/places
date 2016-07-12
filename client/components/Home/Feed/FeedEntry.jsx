@@ -3,7 +3,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 
 const modalStyle = {
-  'max-width': '500px',
+  maxWidth: '500px',
   height: 'auto',
 };
 const userImageUrl = {
@@ -11,14 +11,14 @@ const userImageUrl = {
   height: '50px',
 };
 const placeTitleStyle = {
-  'font-size': '16px',
-  'margin-top': '5px',
-  'font-weight': 'bold',
+  fontSize: '16px',
+  marginTop: '5px',
+  fontWeight: 'bold',
 };
 const noteStyle = {
-  'font-size': '20px',
-  'margin-top': '5px',
-  'font-weight': 'bold',
+  fontSize: '20px',
+  marginTop: '5px',
+  fontWeight: 'bold',
 };
 
 const FeedEntry = (props) => {
@@ -79,12 +79,12 @@ const FeedEntry = (props) => {
       </div>
       <div className="card-panel grey lighten-5 z-depth-1 hoverable">
         <div className="row valign-wrapper">
-          <div className="col s2" style={{ 'text-align': 'center' }}>
+          <div className="col s2" style={{ textAlign: 'center' }}>
             <img
               src={props.place.userImageUrl} alt=""
               className="responsive-img" style={userImageUrl}
             />
-            <div style={{ 'font-weight': 'bold' }}>
+            <div style={{ fontWeigh: 'bold' }}>
               {props.place.userName}
             </div>
           </div>

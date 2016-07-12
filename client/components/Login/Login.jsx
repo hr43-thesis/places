@@ -18,12 +18,18 @@ const Login = (props) => (
             Where will Places take you?
           </span>
           <div className="login">
-            <button
+            <div
               onClick={props.handleLoginClick}
-              className="waves-effect waves-light btn"
+              className="waves-effect waves-light btn-large mainLogin"
             >
               Login to Discover
-            </button>
+            </div>
+            <div
+              onClick={() => console.log('hit gues')}
+              className="waves-effect waves-light btn-large"
+            >
+              Login as Guest
+            </div>
           </div>
         </div>
       </div>
@@ -49,7 +55,7 @@ const Login = (props) => (
     </div>
     <div className="row">
       <div className="col s12 footer">
-        Made with love in San Francisco
+        Made with ❤ in San Francisco
       </div>
     </div>
   </div>
